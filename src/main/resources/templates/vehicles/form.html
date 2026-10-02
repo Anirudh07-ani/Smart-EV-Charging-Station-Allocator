@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('Vehicle Registration')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('vehicles')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow flex items-center justify-center py-space-xl">
+        <div class="w-full px-gutter max-w-xl mx-auto">
+            <!-- Breadcrumb Navigation -->
+            <div class="mb-space-md flex items-center gap-space-xs font-label-mono text-caption uppercase text-outline">
+                <a href="/vehicles" th:href="@{/vehicles}" class="hover:text-primary transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Back to Fleet</span>
+                </a>
+            </div>
+
+            <!-- Form Card Container -->
+            <div class="relative rounded-2xl bg-surface-container-lowest shadow-xl border border-outline-variant/30 p-space-lg sm:p-space-xl overflow-hidden">
+                <!-- Ambient Subtle Glow Accent -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
+
+                <!-- Header -->
+                <div class="flex items-center gap-space-sm mb-space-lg pb-space-md border-b border-surface-container-low">
+                    <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary shadow-sm shrink-0">
+                        <span class="material-symbols-outlined text-[26px]">electric_car</span>
+                    </div>
+                    <div>
+                        <h2 class="font-display-md text-2xl text-on-surface font-bold">Register EV Fleet Vehicle</h2>
+                        <p class="font-body-md text-sm text-on-surface-variant">Pair vehicle battery parameters with driver telemetry profile.</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form th:action="@{/vehicles/save}" th:object="${vehicle}" method="post" class="flex flex-col gap-space-md">
+                    <input type="hidden" th:field="*{vehicleId}"/>
+
+                    <!-- Vehicle Model -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Vehicle Make &amp; Model</label>
+                        <input type="text" th:field="*{model}" required placeholder="e.g. Tesla Model 3 Long Range / Tata Nexon EV"
+                               class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                    </div>
+
+                    <!-- Plate Registration Number -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Plate Registration Number</label>
+                        <input type="text" th:field="*{registrationNumber}" required placeholder="e.g. CA-892-EV / MH12AB1234"
+                               class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 font-mono tracking-wider border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                        <!-- Battery Capacity -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Battery Pack Capacity (kWh)</label>
+                            <input type="number" step="0.1" min="1" th:field="*{batteryCapacity}" required placeholder="75.0"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+
+                        <!-- Current Battery Level (%) -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Current Battery SoC (%)</label>
+                            <input type="number" step="1" min="0" max="100" th:field="*{currentBatteryLevel}" required placeholder="50"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <!-- Owner (User) -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Assigned Fleet Driver / Owner</label>
+                        <select th:field="*{user.userId}" required class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md cursor-pointer">
+                            <option value="">-- Select Driver --</option>
+                            <option th:each="u : ${users}" th:value="${u.userId}" th:text="${u.name} + ' (' + ${u.email} + ')'"></option>
+                        </select>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center justify-between pt-space-lg mt-space-sm border-t border-surface-container-low">
+                        <a href="/vehicles" th:href="@{/vehicles}"
+                           class="px-space-lg py-space-sm rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-sm transition-colors">
+                            Cancel
+                        </a>
+                        <button type="submit"
+                                class="px-space-xl py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                            <span>Register Vehicle</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-on-surface":"#eef0ff","secondary-fixed":"#6ffbbe","tertiary":"#b61722","on-primary":"#ffffff","on-tertiary-fixed-variant":"#930013","on-secondary-container":"#00714d","surface-container-low":"#f2f3ff","on-surface":"#131b2e","inverse-surface":"#283044","surface-variant":"#dae2fd","surface-bright":"#faf8ff","tertiary-fixed":"#ffdad7","on-tertiary":"#ffffff","inverse-primary":"#93ccff","outline-variant":"#bfc7d2","on-error":"#ffffff","error":"#ba1a1a","on-primary-container":"#fdfcff","surface-tint":"#006398","surface-container":"#eaedff","surface-dim":"#d2d9f4","primary-container":"#007bb9","surface-container-lowest":"#ffffff","surface-container-highest":"#dae2fd","secondary-fixed-dim":"#4edea3","on-background":"#131b2e","on-secondary-fixed":"#002113","on-primary-fixed":"#001d31","background":"#faf8ff","primary-fixed-dim":"#93ccff","surface":"#faf8ff","on-surface-variant":"#3f4850","tertiary-fixed-dim":"#ffb3ad","on-secondary-fixed-variant":"#005236","on-error-container":"#93000a","on-primary-fixed-variant":"#004b73","outline":"#707881","on-tertiary-fixed":"#410004","secondary-container":"#6cf8bb","on-tertiary-container":"#fffbff","secondary":"#006c49","on-secondary":"#ffffff","error-container":"#ffdad6","surface-container-high":"#e2e7ff","primary":"#006194","primary-fixed":"#cce5ff","tertiary-container":"#da3437"},borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},spacing:{"margin":"2rem","space-xs":"0.25rem","gutter":"1.5rem","space-lg":"1.5rem","space-md":"1rem","space-xl":"2.5rem","space-sm":"0.5rem"},fontFamily:{"caption":["Inter"],"body-md":["Inter"],"display-lg-mobile":["Space Grotesk"],"label-mono":["Space Grotesk"],"telemetry-metric-sm":["Space Grotesk"],"telemetry-metric":["Space Grotesk"],"display-md-mobile":["Space Grotesk"],"display-lg":["Space Grotesk"],"headline-sm":["Space Grotesk"],"display-md":["Space Grotesk"],"body-lg":["Inter"],"label-md":["Inter"]},fontSize:{"caption":["11px",{"lineHeight":"14px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-mono":["11px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"700"}],"telemetry-metric-sm":["28px",{"lineHeight":"32px","letterSpacing":"-0.03em","fontWeight":"600"}],"telemetry-metric":["48px",{"lineHeight":"52px","letterSpacing":"-0.04em","fontWeight":"700"}],"display-md-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-md":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><img alt="Smart EV Allocator Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkXG_LCb8G5psqHox5p4ADEaFqIgkeoJQn-_3Jc3KZ6uXFiyUUtBPbMv-Vn2KdGnTyiM8HoVZjLS7wsHsvWSfG_-PV6_gkS9QHvKc5mrVsjhkCNTuem-P6dwwIItUaoBCwdkI7Jc01AFhcHihuLereSfPvMIVO9ZPo6fkPB5t4BtLt3zPEKvpanNu_VSADCAzs7ZxkK66bM1H05ra93LA3bAik-bnBypauJBw64m8GqHwV3-5nt6HreQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface leading-none">VOLTALLOC</span><span class="font-label-mono text-caption uppercase text-outline tracking-wider leading-none mt-space-xs">Smart EV Allocator</span></div></div><nav class="hidden lg:flex items-center gap-space-xs px-space-xs py-space-xs rounded-full bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a aria-current="page" class="px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm" data-path="dashboard" href="#">Dashboard</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="stations" href="#">Stations</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="users" href="#">Users</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="vehicles" href="#">Vehicles</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="bookings" href="#">Bookings</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#006c49]"></span><span class="font-label-mono text-caption text-secondary uppercase">Grid Online • 99.8% Efficiency</span></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Alex R.</span><span class="font-caption text-caption text-outline leading-tight">Fleet Admin</span></div><a class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md" data-path="login" href="#"><span class="material-symbols-outlined text-[16px]">logout</span><span>Logout</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Interactive & Live Time Sync Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const updateClock = () => {
+        const now = new Date();
+        const el = document.getElementById("telemetry-clock");
+        if (el) {
+          el.textContent = now.toLocaleTimeString("en-US", {
+            hour12: false,
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          }) + " UTC";
+        }
+      };
+      updateClock();
+      setInterval(updateClock, 1000);
+
+      // Micro-interaction for quick-filter tabs
+      const filterButtons = document.querySelectorAll(".filter-pill");
+      filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach(b => {
+            b.classList.remove("bg-primary", "text-on-primary", "shadow-md");
+            b.classList.add("bg-surface-container-low", "text-on-surface-variant");
+          });
+          btn.classList.add("bg-primary", "text-on-primary", "shadow-md");
+          btn.classList.remove("bg-surface-container-low", "text-on-surface-variant");
+        });
+      });
+    });
+  </script>
+<!-- Telemetry Cockpit Master Container -->
+<div class="w-full px-gutter py-space-lg flex flex-col gap-space-xl max-w-[1600px] mx-auto">
+<!-- Top Cockpit Ribbon -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg bg-surface-container-lowest/80 backdrop-blur-xl p-space-lg rounded-lg shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-mono text-caption text-primary tracking-widest uppercase">Grid Telemetry Cockpit</span>
+<span class="text-outline-variant font-caption text-caption">•</span>
+<span class="font-label-mono text-caption text-secondary flex items-center gap-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_#006c49]"></span>
+            GRID NORMAL • OFF-PEAK TARIFF ACTIVE (-32%)
+          </span>
+</div>
+<div class="flex items-baseline gap-space-md flex-wrap">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Telemetry &amp; Station Overview</h1>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-mono text-caption uppercase tracking-wider text-on-surface" id="telemetry-clock">14:28:49 UTC</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Floating Array -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-all duration-200 text-on-surface font-label-md text-label-md shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px] text-primary">ev_station</span>
+<span>+ Add Station</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-all duration-200 text-on-surface font-label-md text-label-md shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px] text-primary">person_add</span>
+<span>+ Register User</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-all duration-200 text-on-surface font-label-md text-label-md shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px] text-primary">directions_car</span>
+<span>+ Add Vehicle</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-lg py-space-xs rounded-full bg-primary-container text-on-primary-container hover:bg-primary transition-all duration-200 font-headline-sm text-label-md shadow-md hover:shadow-lg active:scale-95">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>New Booking</span>
+</button>
+</div>
+</div>
+<!-- 6 Core Key Telemetric Pods -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-space-md">
+<!-- Metric 1: Total Stations -->
+<div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-DEFAULT flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase">Total Stations</span>
+<div class="w-7 h-7 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">ev_station</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-telemetry-metric text-telemetry-metric text-on-surface leading-none tracking-tight">28</div>
+<div class="mt-space-xs flex items-center gap-space-xs font-label-mono text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span>+2 added this week</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 82%;"></div>
+</div>
+</div>
+<!-- Metric 2: Available Slots -->
+<div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-DEFAULT flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase">Available Slots</span>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption">75% Free</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-telemetry-metric text-telemetry-metric text-on-surface leading-none tracking-tight">84</span>
+<span class="font-headline-sm text-headline-sm text-outline">/ 112</span>
+</div>
+<div class="mt-space-xs font-caption text-caption text-on-surface-variant">
+            Standard CCS2 &amp; NACS Bays
+          </div>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Metric 3: Active Sessions -->
+<div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-DEFAULT flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase">Active Sessions</span>
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-telemetry-metric text-telemetry-metric text-primary leading-none tracking-tight">28</div>
+<div class="mt-space-xs font-caption text-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">electric_bolt</span>
+<span>Charging Now Live</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 64%;"></div>
+</div>
+</div>
+<!-- Metric 4: Registered EVs -->
+<div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-DEFAULT flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase">Registered EVs</span>
+<div class="w-7 h-7 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">electric_car</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-telemetry-metric text-telemetry-metric text-on-surface leading-none tracking-tight">342</div>
+<div class="mt-space-xs font-caption text-caption text-on-surface-variant">
+            Across 18 Fleet OEM Models
+          </div>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 48%;"></div>
+</div>
+</div>
+<!-- Metric 5: Active Users -->
+<div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-DEFAULT flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase">Active Users</span>
+<div class="w-7 h-7 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-telemetry-metric text-telemetry-metric text-on-surface leading-none tracking-tight" th:text="${users != null ? users.size() : 219}">219</div>
+<div class="mt-space-xs font-caption text-caption text-on-surface-variant">
+            Verified Commercial Drivers
+          </div>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+<!-- Metric 6: Completed Bookings -->
+<div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-DEFAULT flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase">Delivered Energy</span>
+<div class="w-7 h-7 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">energy_program_saving</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="font-telemetry-metric text-telemetry-metric text-on-surface leading-none tracking-tight">1,840</div>
+<div class="mt-space-xs font-label-mono text-caption text-secondary">
+            54.2 MWh Clean Energy
+          </div>
+</div>
+<div class="w-full bg-surface-container-low h-1 rounded-full mt-space-md overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<!-- Telemetry Visuals: Grid Capacity & Energy Flow -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Pod (7 Cols): Live Station Capacity Distribution -->
+<div class="lg:col-span-7 bg-surface-container-lowest/90 backdrop-blur-xl p-space-lg rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Live Station Capacity</span>
+<span class="font-caption text-caption text-on-surface-variant">Real-time load balancing across hub dispatch points</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-mono text-caption text-on-surface-variant uppercase">Dynamic Throttling: Active</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-md my-auto">
+<!-- Station 1 -->
+<div class="p-space-md bg-surface-container-low rounded-DEFAULT flex flex-col gap-space-xs transition-colors hover:bg-surface-container">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-body-lg text-on-surface">CyberHub Supercharger Alpha</span>
+<span class="font-label-mono text-caption text-on-surface-variant uppercase px-space-xs py-0.5 rounded-full bg-surface-container-lowest">8 / 10 Bays</span>
+</div>
+<span class="font-label-mono text-caption text-on-surface font-semibold">240 kW • 80% Load</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 60%;"></div>
+<div class="bg-secondary h-full" style="width: 20%;"></div>
+</div>
+<div class="flex justify-between text-outline font-caption text-caption">
+<span>Peak Power Rate: 350 kW CCS2</span>
+<span>Grid Draw: 94.2% Efficiency</span>
+</div>
+</div>
+<!-- Station 2 -->
+<div class="p-space-md bg-surface-container-low rounded-DEFAULT flex flex-col gap-space-xs transition-colors hover:bg-surface-container">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-headline-sm text-body-lg text-on-surface">Metro Plaza Fast DC Hub</span>
+<span class="font-label-mono text-caption text-on-surface-variant uppercase px-space-xs py-0.5 rounded-full bg-surface-container-lowest">12 / 16 Bays</span>
+</div>
+<span class="font-label-mono text-caption text-on-surface font-semibold">185 kW • 75% Load</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 75%;"></div>
+</div>
+<div class="flex justify-between text-outline font-caption text-caption">
+<span>Peak Power Rate: 150 kW Shared</span>
+<span>Optimal Substation Buffer</span>
+</div>
+</div>
+<!-- Station 3 -->
+<div class="p-space-md bg-surface-container-low rounded-DEFAULT flex flex-col gap-space-xs transition-colors hover:bg-surface-container">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-body-lg text-on-surface">GreenValley AC Smart Park</span>
+<span class="font-label-mono text-caption text-on-surface-variant uppercase px-space-xs py-0.5 rounded-full bg-surface-container-lowest">14 / 20 Bays</span>
+</div>
+<span class="font-label-mono text-caption text-on-surface font-semibold">44 kW • 40% Load</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full" style="width: 40%;"></div>
+</div>
+<div class="flex justify-between text-outline font-caption text-caption">
+<span>Peak Power Rate: 22 kW Level-2</span>
+<span>100% Rooftop Solar Offset</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between border-t border-transparent text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1 font-label-mono"><span class="w-2 h-2 rounded-sm bg-primary"></span> Fast DC</span>
+<span class="inline-flex items-center gap-1 font-label-mono"><span class="w-2 h-2 rounded-sm bg-secondary"></span> Smart AC</span>
+</div>
+<span class="font-label-mono text-caption uppercase text-primary cursor-pointer hover:underline">Station Config Matrix →</span>
+</div>
+</div>
+<!-- Right Pod (5 Cols): Live Energy Flow Telemetry SVG -->
+<div class="lg:col-span-5 bg-surface-container-lowest/90 backdrop-blur-xl p-space-lg rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Energy Flow Telemetry</span>
+<span class="font-caption text-caption text-on-surface-variant">Real-time demand vs. grid peak threshold</span>
+</div>
+<span class="font-label-mono text-caption px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface-variant uppercase">Live Stream</span>
+</div>
+<!-- Inline Pure SVG Telemetry Waveform -->
+<div class="w-full my-auto flex flex-col justify-center">
+<div class="relative w-full h-44 flex items-center justify-center">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 400 160">
+<defs>
+<lineargradient id="energyGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#007bb9" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#007bb9" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid lines -->
+<line stroke="#dae2fd" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="400" y1="30" y2="30"></line>
+<line stroke="#dae2fd" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="400" y1="80" y2="80"></line>
+<line stroke="#dae2fd" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="400" y1="130" y2="130"></line>
+<!-- Threshold Cap Line -->
+<line opacity="0.7" stroke="#da3437" stroke-dasharray="2 2" stroke-width="1.5" x1="0" x2="400" y1="45" y2="45"></line>
+<text fill="#da3437" font-family="Space Grotesk" font-size="9" x="310" y="40">MAX PEAK 650 kW</text>
+<!-- Filled curve -->
+<path d="M 0 140 Q 50 110, 90 90 T 170 65 T 250 85 T 320 50 T 400 70 L 400 160 L 0 160 Z" fill="url(#energyGrad)"></path>
+<!-- Kinetic stroke line -->
+<path d="M 0 140 Q 50 110, 90 90 T 170 65 T 250 85 T 320 50 T 400 70" fill="none" stroke="#007bb9" stroke-linecap="round" stroke-width="3"></path>
+<!-- Current Node Glow -->
+<circle cx="320" cy="50" fill="#006194" r="5"></circle>
+<circle cx="320" cy="50" fill="#93ccff" opacity="0.4" r="10"></circle>
+</svg>
+</div>
+<div class="grid grid-cols-3 gap-space-xs mt-space-md pt-space-xs">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-outline">Current Aggregate</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">482 <span class="font-caption text-caption text-on-surface-variant">kW</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-outline">Solar Direct</span>
+<span class="font-headline-sm text-headline-sm text-secondary">114 <span class="font-caption text-caption text-on-surface-variant">kW</span></span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-caption text-caption text-outline">Safety Margin</span>
+<span class="font-headline-sm text-headline-sm text-primary">+26%</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md p-space-sm rounded-DEFAULT bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-body-md text-caption text-on-surface">Dynamic Grid Stabilizer: <strong class="font-semibold">Optimal</strong></span>
+</div>
+<span class="font-label-mono text-caption text-outline">Auto-Failover Ready</span>
+</div>
+</div>
+</div>
+<!-- Booking Session Live Monitor & Table -->
+<div class="bg-surface-container-lowest/90 backdrop-blur-xl p-space-lg rounded-lg shadow-sm flex flex-col gap-space-md">
+<!-- Table Header & Controls -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Booking Dispatches</h2>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-high font-label-mono text-caption text-on-surface-variant">Realtime Feed</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5">High-frequency active charging sessions and terminal reservations</p>
+</div>
+<!-- Filter Pills Bar -->
+<div class="flex items-center gap-space-xs p-1 rounded-full bg-surface-container-low self-start sm:self-auto overflow-x-auto max-w-full">
+<button class="filter-pill px-space-md py-1 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-md transition-all">All Slots</button>
+<button class="filter-pill px-space-md py-1 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Charging</button>
+<button class="filter-pill px-space-md py-1 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Reserved</button>
+<button class="filter-pill px-space-md py-1 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Completed</button>
+</div>
+</div>
+<!-- Modern Borderless Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-outline font-label-mono text-caption uppercase tracking-wider">
+<th class="py-space-md px-space-md">Session ID</th>
+<th class="py-space-md px-space-md">Driver Profile</th>
+<th class="py-space-md px-space-md">Vehicle Spec</th>
+<th class="py-space-md px-space-md">Station Terminal</th>
+<th class="py-space-md px-space-md">Energy / Time</th>
+<th class="py-space-md px-space-md">Status</th>
+<th class="py-space-md px-space-md text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md text-body-md">
+<!-- Row 1: CHARGING -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="font-label-mono text-label-md font-semibold text-primary">#BK-9024</span>
+<div class="font-caption text-caption text-outline">Bay 04 • Rapid</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-headline-sm text-caption font-bold">
+                    MK
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Marcus Kim</span>
+<span class="font-caption text-caption text-on-surface-variant">+1 (555) 302-8819</span>
+</div>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">Model Y Performance</span>
+<span class="font-label-mono text-caption text-outline uppercase">EV-CA-8891 • 82 kWh</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">CyberHub Supercharger Alpha</span>
+<span class="font-caption text-caption text-secondary font-medium">DC Fast • 250 kW Bay #2</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">42.8 kWh</span>
+<span class="font-caption text-caption text-outline">28 min elapsed (Est. 12m)</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-mono text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                  CHARGING • 78%
+                </span>
+</td>
+<td class="py-space-lg px-space-md text-right whitespace-nowrap">
+<a class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary transition-all font-label-md text-caption" href="#">
+                  View Details
+                </a>
+</td>
+</tr>
+<!-- Row 2: RESERVED -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="font-label-mono text-label-md font-semibold text-primary">#BK-9023</span>
+<div class="font-caption text-caption text-outline">Bay 09 • Standard</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-headline-sm text-caption font-bold">
+                    EL
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Elena Rostova</span>
+<span class="font-caption text-caption text-on-surface-variant">+1 (555) 491-0021</span>
+</div>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">Polestar 3 Dual Motor</span>
+<span class="font-label-mono text-caption text-outline uppercase">EV-NY-4190 • 111 kWh</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Metro Plaza DC Terminal</span>
+<span class="font-caption text-caption text-primary font-medium">DC Fast • 150 kW</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">Reserved 50 kWh</span>
+<span class="font-caption text-caption text-outline">Slot: 15:00 - 15:45 UTC</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-surface-container-high text-primary font-label-mono text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  RESERVED
+                </span>
+</td>
+<td class="py-space-lg px-space-md text-right whitespace-nowrap">
+<a class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary transition-all font-label-md text-caption" href="#">
+                  View Details
+                </a>
+</td>
+</tr>
+<!-- Row 3: CHARGING -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="font-label-mono text-label-md font-semibold text-primary">#BK-9022</span>
+<div class="font-caption text-caption text-outline">Bay 01 • Priority</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-headline-sm text-caption font-bold">
+                    DS
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">David Singh</span>
+<span class="font-caption text-caption text-on-surface-variant">+1 (555) 812-9903</span>
+</div>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">Rivian R1T Launch Ed.</span>
+<span class="font-label-mono text-caption text-outline uppercase">EV-WA-3301 • 135 kWh</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">CyberHub Supercharger Alpha</span>
+<span class="font-caption text-caption text-secondary font-medium">DC Ultra • 350 kW Bay #1</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">68.4 kWh</span>
+<span class="font-caption text-caption text-outline">35 min elapsed (Est. 4m)</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-mono text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                  CHARGING • 92%
+                </span>
+</td>
+<td class="py-space-lg px-space-md text-right whitespace-nowrap">
+<a class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary transition-all font-label-md text-caption" href="#">
+                  View Details
+                </a>
+</td>
+</tr>
+<!-- Row 4: COMPLETED -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="font-label-mono text-label-md font-semibold text-outline">#BK-9021</span>
+<div class="font-caption text-caption text-outline">Bay 12 • AC</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container text-outline flex items-center justify-center font-headline-sm text-caption font-bold">
+                    AT
+                  </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Aria Tanaka</span>
+<span class="font-caption text-caption text-on-surface-variant">+1 (555) 774-1290</span>
+</div>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">Hyundai Ioniq 6</span>
+<span class="font-label-mono text-caption text-outline uppercase">EV-OR-9012 • 77.4 kWh</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">GreenValley AC Smart Park</span>
+<span class="font-caption text-caption text-outline">Level 2 AC • 22 kW</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-headline-sm text-label-md text-on-surface">58.1 kWh</span>
+<span class="font-caption text-caption text-outline">Total Time: 2h 45m</span>
+</div>
+</td>
+<td class="py-space-lg px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-surface-container text-on-surface-variant font-label-mono text-caption font-semibold">
+                  COMPLETED
+                </span>
+</td>
+<td class="py-space-lg px-space-md text-right whitespace-nowrap">
+<a class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary transition-all font-label-md text-caption" href="#">
+                  View Details
+                </a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer Rhythm -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-md">
+<span class="font-caption text-caption text-on-surface-variant">Showing active 4 of 28 real-time bookings (Thymeleaf: <code class="font-label-mono text-caption text-primary">bookings.size()</code>)</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-1 rounded-full bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container disabled:opacity-40">Previous</button>
+<span class="px-space-md py-1 rounded-full bg-primary-container text-on-primary-container font-label-mono text-caption">Page 1</span>
+<button class="px-space-md py-1 rounded-full bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-lg shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-gutter flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption"><span>© 2025 Smart EV Allocator</span><span>•</span><span>Java Spring Boot Core</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-mono text-caption text-on-surface-variant uppercase">Telemetry Socket Active</span></div><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="font-label-mono text-caption text-on-surface-variant uppercase">Load Balancer: OK</span></div></div></div></footer></body></html>

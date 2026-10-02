@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-on-surface":"#eef0ff","secondary-fixed":"#6ffbbe","tertiary":"#b61722","on-primary":"#ffffff","on-tertiary-fixed-variant":"#930013","on-secondary-container":"#00714d","surface-container-low":"#f2f3ff","on-surface":"#131b2e","inverse-surface":"#283044","surface-variant":"#dae2fd","surface-bright":"#faf8ff","tertiary-fixed":"#ffdad7","on-tertiary":"#ffffff","inverse-primary":"#93ccff","outline-variant":"#bfc7d2","on-error":"#ffffff","error":"#ba1a1a","on-primary-container":"#fdfcff","surface-tint":"#006398","surface-container":"#eaedff","surface-dim":"#d2d9f4","primary-container":"#007bb9","surface-container-lowest":"#ffffff","surface-container-highest":"#dae2fd","secondary-fixed-dim":"#4edea3","on-background":"#131b2e","on-secondary-fixed":"#002113","on-primary-fixed":"#001d31","background":"#faf8ff","primary-fixed-dim":"#93ccff","surface":"#faf8ff","on-surface-variant":"#3f4850","tertiary-fixed-dim":"#ffb3ad","on-secondary-fixed-variant":"#005236","on-error-container":"#93000a","on-primary-fixed-variant":"#004b73","outline":"#707881","on-tertiary-fixed":"#410004","secondary-container":"#6cf8bb","on-tertiary-container":"#fffbff","secondary":"#006c49","on-secondary":"#ffffff","error-container":"#ffdad6","surface-container-high":"#e2e7ff","primary":"#006194","primary-fixed":"#cce5ff","tertiary-container":"#da3437"},borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},spacing:{"margin":"2rem","space-xs":"0.25rem","gutter":"1.5rem","space-lg":"1.5rem","space-md":"1rem","space-xl":"2.5rem","space-sm":"0.5rem"},fontFamily:{"caption":["Inter"],"body-md":["Inter"],"display-lg-mobile":["Space Grotesk"],"label-mono":["Space Grotesk"],"telemetry-metric-sm":["Space Grotesk"],"telemetry-metric":["Space Grotesk"],"display-md-mobile":["Space Grotesk"],"display-lg":["Space Grotesk"],"headline-sm":["Space Grotesk"],"display-md":["Space Grotesk"],"body-lg":["Inter"],"label-md":["Inter"]},fontSize:{"caption":["11px",{"lineHeight":"14px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-mono":["11px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"700"}],"telemetry-metric-sm":["28px",{"lineHeight":"32px","letterSpacing":"-0.03em","fontWeight":"600"}],"telemetry-metric":["48px",{"lineHeight":"52px","letterSpacing":"-0.04em","fontWeight":"700"}],"display-md-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-md":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><img alt="Smart EV Allocator Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkXG_LCb8G5psqHox5p4ADEaFqIgkeoJQn-_3Jc3KZ6uXFiyUUtBPbMv-Vn2KdGnTyiM8HoVZjLS7wsHsvWSfG_-PV6_gkS9QHvKc5mrVsjhkCNTuem-P6dwwIItUaoBCwdkI7Jc01AFhcHihuLereSfPvMIVO9ZPo6fkPB5t4BtLt3zPEKvpanNu_VSADCAzs7ZxkK66bM1H05ra93LA3bAik-bnBypauJBw64m8GqHwV3-5nt6HreQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface leading-none">VOLTALLOC</span><span class="font-label-mono text-caption uppercase text-outline tracking-wider leading-none mt-space-xs">Smart EV Allocator</span></div></div><nav class="hidden lg:flex items-center gap-space-xs px-space-xs py-space-xs rounded-full bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="stations" href="#">Stations</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="users" href="#">Users</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="vehicles" href="#">Vehicles</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="bookings" href="#">Bookings</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#006c49]"></span><span class="font-label-mono text-caption text-secondary uppercase">Grid Online • 99.8% Efficiency</span></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Alex R.</span><span class="font-caption text-caption text-outline leading-tight">Fleet Admin</span></div><a class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md" data-path="login" href="#"><span class="material-symbols-outlined text-[16px]">logout</span><span>Logout</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Top Telemetrics Header Bar -->
+<div class="w-full px-gutter pt-space-lg pb-space-md flex flex-col gap-space-md">
+<!-- Breadcrumb & Status Pill -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-primary font-label-mono text-caption uppercase tracking-wider">
+          Telemetrics &amp; Sessions
+        </span>
+<span class="text-outline-variant font-label-mono text-caption">/</span>
+<span class="font-label-mono text-caption text-outline uppercase tracking-wider">Dispatched Operations</span>
+</div>
+<!-- Quick Pulse Diagnostic -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-mono text-caption text-secondary uppercase tracking-wider">Dynamic Load Balancer Active</span>
+</div>
+<div class="h-3 w-px bg-outline-variant"></div>
+<span class="font-label-mono text-caption text-on-surface-variant">Grid Frequency: 60.02 Hz</span>
+</div>
+</div>
+<!-- Title & Action Triggers -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="max-w-3xl">
+<h1 class="font-display-md text-display-md text-on-surface tracking-tight leading-tight">
+          Charging Bookings &amp; Sessions
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Manage dynamic station reservations, monitor real-time high-voltage telemetry, and audit algorithmic dispatch receipts across the VoltAlloc grid network.
+        </p>
+</div>
+<!-- Primary Action Cluster -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-label-md shadow-sm" id="btn-export-csv">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export CSV</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary transition-all shadow-md hover:shadow-lg font-headline-sm text-[14px]" id="btn-open-reserve-modal">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ New Reservation</span>
+</button>
+</div>
+</div>
+<!-- Filter Badges & Search HUD -->
+<div class="mt-space-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md p-space-sm rounded-lg bg-surface-container-lowest shadow-sm">
+<!-- Filter Segmented Tabs -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-space-xs">
+<button class="filter-chip active-filter px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md transition-colors" data-filter="all">
+          All Bookings <span class="ml-space-xs font-label-mono text-caption opacity-80">(142)</span>
+</button>
+<button class="filter-chip px-space-md py-space-xs rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors" data-filter="reserved">
+          Reserved <span class="ml-space-xs font-label-mono text-caption opacity-80">(8)</span>
+</button>
+<button class="filter-chip px-space-md py-space-xs rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors flex items-center gap-space-xs" data-filter="charging">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+          Charging Live <span class="font-label-mono text-caption opacity-80">(14)</span>
+</button>
+<button class="filter-chip px-space-md py-space-xs rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors" data-filter="completed">
+          Completed <span class="ml-space-xs font-label-mono text-caption opacity-80">(120)</span>
+</button>
+</div>
+<!-- Search & Filters Container -->
+<div class="flex items-center gap-space-sm w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-space-xs rounded-full bg-surface-container text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-high transition-colors" id="booking-search" placeholder="Search driver, vehicle, bay..." type="text"/>
+</div>
+<select class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-high transition-colors cursor-pointer">
+<option value="all-hubs">All Hubs</option>
+<option value="cyberhub">CyberHub Supercharger</option>
+<option value="metroplaza">Metro Plaza FastHub</option>
+<option value="baypoint">Baypoint Dock</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Real-Time Charging Telemetry Live Highlights (Cards) -->
+<div class="w-full px-gutter py-space-md">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Active Telemetry Pods</span>
+</div>
+<span class="font-label-mono text-caption text-outline uppercase tracking-wider">Streaming Live • 1 sec sync</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+<!-- Card 1: Tesla Model 3 (Charging Live) -->
+<div class="relative rounded-lg bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-primary-fixed/30 blur-2xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption uppercase flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Live Charging
+            </span>
+<span class="font-label-mono text-caption text-outline">#BK-9024</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Tesla Model 3</h3>
+<span class="font-label-mono text-caption text-outline uppercase">CA-892-EV</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-space-xs mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">ev_station</span>
+              CyberHub Supercharger Alpha • Bay 04
+            </p>
+</div>
+<!-- Live Metrics Grid -->
+<div class="grid grid-cols-3 gap-space-xs my-space-lg p-space-sm rounded bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption text-outline uppercase">Delivery</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-primary">120<span class="text-[14px] font-normal ml-0.5 text-on-surface-variant">kW</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-caption text-outline uppercase">Elapsed</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">24<span class="text-[13px] font-normal text-outline">m</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-caption text-outline uppercase">Remaining</span>
+<span class="font-headline-sm text-headline-sm text-secondary">~8<span class="text-[13px] font-normal text-outline">m</span></span>
+</div>
+</div>
+<!-- State of Charge Gauge Bar -->
+<div class="flex flex-col gap-space-xs mb-space-md">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface-variant">State of Charge (SoC)</span>
+<span class="font-label-mono font-headline-sm text-primary">68% → 82%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-primary rounded-full transition-all duration-500" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+<!-- Action Stop -->
+<div class="pt-space-xs flex items-center justify-between border-t border-transparent">
+<span class="font-label-mono text-caption text-outline">Allocated: $0.28 / kWh</span>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-error-container text-on-error-container hover:bg-tertiary-fixed-dim transition-colors font-label-md text-label-md shadow-xs" onclick="emergencyHalt('BK-9024')">
+<span class="material-symbols-outlined text-[16px]">stop_circle</span>
+<span>Stop Charging</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Rivian R1T (Charging Live) -->
+<div class="relative rounded-lg bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-secondary-container/40 blur-2xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption uppercase flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Live Charging
+            </span>
+<span class="font-label-mono text-caption text-outline">#BK-9022</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rivian R1T Fleet</h3>
+<span class="font-label-mono text-caption text-outline uppercase">TX-771-KWH</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-space-xs mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">ev_station</span>
+              CyberHub Supercharger Alpha • Bay 01
+            </p>
+</div>
+<!-- Live Metrics Grid -->
+<div class="grid grid-cols-3 gap-space-xs my-space-lg p-space-sm rounded bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption text-outline uppercase">Delivery</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-secondary">180<span class="text-[14px] font-normal ml-0.5 text-on-surface-variant">kW</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-caption text-outline uppercase">Elapsed</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">18<span class="text-[13px] font-normal text-outline">m</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-caption text-outline uppercase">Est. Cost</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">$16.80</span>
+</div>
+</div>
+<!-- State of Charge Gauge Bar -->
+<div class="flex flex-col gap-space-xs mb-space-md">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface-variant">State of Charge (SoC)</span>
+<span class="font-label-mono font-headline-sm text-secondary">45% → 60%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 60%;"></div>
+</div>
+</div>
+</div>
+<!-- Action Stop -->
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-mono text-caption text-outline">Peak CCS Ultra DC</span>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-error-container text-on-error-container hover:bg-tertiary-fixed-dim transition-colors font-label-md text-label-md shadow-xs" onclick="emergencyHalt('BK-9022')">
+<span class="material-symbols-outlined text-[16px]">stop_circle</span>
+<span>Stop Charging</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Metro Plaza FastHub (Reserved Waiting) -->
+<div class="relative rounded-lg bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-primary-fixed text-on-primary-fixed font-label-mono text-caption uppercase flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Reserved Standby
+            </span>
+<span class="font-label-mono text-caption text-outline">#BK-9028</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hyundai Ioniq 5</h3>
+<span class="font-label-mono text-caption text-outline uppercase">OR-440-BAT</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-space-xs mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">schedule</span>
+              Metro Plaza FastHub • Bay 02
+            </p>
+</div>
+<!-- Standby Details Block -->
+<div class="flex flex-col gap-space-xs my-space-lg p-space-sm rounded bg-surface-container-low">
+<div class="flex justify-between items-center text-body-md font-body-md">
+<span class="text-outline">Assigned Driver</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Elena Rostova</span>
+</div>
+<div class="flex justify-between items-center text-body-md font-body-md">
+<span class="text-outline">Scheduled Slot</span>
+<span class="font-label-mono text-caption text-primary">Today @ 15:30 (In 12m)</span>
+</div>
+<div class="flex justify-between items-center text-body-md font-body-md">
+<span class="text-outline">Plug Target</span>
+<span class="font-label-md text-label-md text-on-surface">Target 90% (800V DC)</span>
+</div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+            Station Bay 02 pre-cooled &amp; authorization handshake pre-verified.
+          </p>
+</div>
+<!-- Action Start Session -->
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-label-mono text-caption text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Bay Unlocked
+          </span>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary text-on-secondary hover:bg-on-secondary-container transition-colors font-headline-sm text-[13px] shadow-xs" onclick="startSession('BK-9028')">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span>Start Session</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Unified Bookings Table & Dispatch Manager -->
+<div class="w-full px-gutter py-space-md">
+<div class="rounded-lg bg-surface-container-lowest shadow-sm overflow-hidden">
+<!-- Table Header & Real-time Count -->
+<div class="p-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Session Manifest</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Spring Boot Bookings Entity View with real-time status and telemetry bindings.</p>
+</div>
+<div class="flex items-center gap-space-xs text-caption font-label-mono text-outline">
+<span>Sort by:</span>
+<button class="px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Start Time (Desc)</button>
+</div>
+</div>
+<!-- Desktop Data Grid -->
+<div class="overflow-x-auto w-full">
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium leading-none">Marcus Thorne</p>
+<span class="font-caption text-caption text-outline leading-none">ID: USR-8802</span>
+</div><table class="w-full text-left border-collapse" id="bookings-table">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-mono text-caption uppercase tracking-wider">
+<th class="py-space-md px-space-lg font-semibold">Booking ID</th>
+<th class="py-space-md px-space-md font-semibold">Driver</th>
+<th class="py-space-md px-space-md font-semibold">Vehicle</th>
+<th class="py-space-md px-space-md font-semibold">Station &amp; Bay</th>
+<th class="py-space-md px-space-md font-semibold">Duration / Timing</th>
+<th class="py-space-md px-space-md font-semibold">Energy &amp; Rate</th>
+<th class="py-space-md px-space-md font-semibold">Status</th>
+<th class="py-space-md px-space-lg text-right font-semibold">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md text-body-md" id="booking-rows-container">
+<!-- Row 1: Live Charging -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-status="charging">
+<td class="py-space-md px-space-lg font-label-mono text-caption text-primary font-bold">
+                #BK-9024
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-mono text-[11px] font-bold">
+                    MT
+                  </div></div></td>
+</tr></tbody></table></div>
+<p class="font-label-md text-label-md text-on-surface leading-none">Tesla Model 3</p>
+<span class="font-label-mono text-caption text-outline leading-none">CA-892-EV • LR Dual</span>
+<p class="font-label-md text-label-md text-on-surface leading-none">CyberHub Alpha</p>
+<span class="font-caption text-caption text-secondary leading-none">Bay 04 (250kW CCS)</span>
+<p class="font-label-mono text-caption text-on-surface leading-none">14:10 → In Progress</p>
+<span class="font-caption text-caption text-outline leading-none">Elapsed: 24 mins</span>
+<p class="font-label-mono text-label-md text-on-surface font-bold leading-none">42.8 kWh</p>
+<span class="font-caption text-caption text-outline leading-none">$11.98 ($0.28/kWh)</span>
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption uppercase inline-flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                  Charging
+                </span>
+<button class="px-space-md py-space-xs rounded-full bg-error-container text-on-error-container hover:bg-tertiary-fixed-dim transition-colors font-label-md text-label-md" onclick="emergencyHalt('BK-9024')">
+                  Stop
+                </button>
+<!-- Row 2: Live Charging -->
+
+
+                #BK-9022
+              
+
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-mono text-[11px] font-bold">
+                    DK
+                  </div></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium leading-none">David Kim</p>
+<span class="font-caption text-caption text-outline leading-none">ID: USR-4190</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-on-surface leading-none">Rivian R1T</p>
+<span class="font-label-mono text-caption text-outline leading-none">TX-771-KWH • Adventure</span>
+<p class="font-label-md text-label-md text-on-surface leading-none">CyberHub Alpha</p>
+<span class="font-caption text-caption text-secondary leading-none">Bay 01 (350kW HPC)</span>
+<p class="font-label-mono text-caption text-on-surface leading-none">14:16 → In Progress</p>
+<span class="font-caption text-caption text-outline leading-none">Elapsed: 18 mins</span>
+<p class="font-label-mono text-label-md text-on-surface font-bold leading-none">56.0 kWh</p>
+<span class="font-caption text-caption text-outline leading-none">$16.80 ($0.30/kWh)</span>
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption uppercase inline-flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                  Charging
+                </span>
+<button class="px-space-md py-space-xs rounded-full bg-error-container text-on-error-container hover:bg-tertiary-fixed-dim transition-colors font-label-md text-label-md" onclick="emergencyHalt('BK-9022')">
+                  Stop
+                </button>
+<!-- Row 3: Reserved Waiting -->
+
+
+                #BK-9028
+              
+
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-mono text-[11px] font-bold">
+                    ER
+                  </div></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium leading-none">Elena Rostova</p>
+<span class="font-caption text-caption text-outline leading-none">ID: USR-3312</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-on-surface leading-none">Hyundai Ioniq 5</p>
+<span class="font-label-mono text-caption text-outline leading-none">OR-440-BAT • AWD</span>
+<p class="font-label-md text-label-md text-on-surface leading-none">Metro Plaza FastHub</p>
+<span class="font-caption text-caption text-primary leading-none">Bay 02 (150kW Ultra)</span>
+<p class="font-label-mono text-caption text-on-surface leading-none">15:30 → 16:15</p>
+<span class="font-caption text-caption text-outline leading-none">Scheduled in 12m</span>
+<p class="font-label-mono text-label-md text-on-surface font-bold leading-none">Pre-Auth (50kWh)</p>
+<span class="font-caption text-caption text-outline leading-none">Estimated $14.50</span>
+<span class="px-space-sm py-space-xs rounded-full bg-primary-fixed text-on-primary-fixed font-label-mono text-caption uppercase inline-flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Reserved
+                </span>
+<button class="px-space-md py-space-xs rounded-full bg-primary hover:bg-primary-container text-on-primary transition-colors font-headline-sm text-[13px] shadow-xs" onclick="startSession('BK-9028')">
+                  Start
+                </button>
+<!-- Row 4: Reserved Waiting -->
+
+
+                #BK-9029
+              
+
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-mono text-[11px] font-bold">
+                    SL
+                  </div></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium leading-none">Sarah Lin</p>
+<span class="font-caption text-caption text-outline leading-none">ID: USR-9041</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-on-surface leading-none">Polestar 2</p>
+<span class="font-label-mono text-caption text-outline leading-none">WA-109-PL • Dual Motor</span>
+<p class="font-label-md text-label-md text-on-surface leading-none">CyberHub Alpha</p>
+<span class="font-caption text-caption text-primary leading-none">Bay 06 (150kW CCS)</span>
+<p class="font-label-mono text-caption text-on-surface leading-none">16:00 → 16:45</p>
+<span class="font-caption text-caption text-outline leading-none">Scheduled in 42m</span>
+<p class="font-label-mono text-label-md text-on-surface font-bold leading-none">Pre-Auth (45kWh)</p>
+<span class="font-caption text-caption text-outline leading-none">Estimated $12.60</span>
+<span class="px-space-sm py-space-xs rounded-full bg-primary-fixed text-on-primary-fixed font-label-mono text-caption uppercase inline-flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Reserved
+                </span>
+<button class="px-space-md py-space-xs rounded-full bg-primary hover:bg-primary-container text-on-primary transition-colors font-headline-sm text-[13px] shadow-xs" onclick="startSession('BK-9029')">
+                  Start
+                </button>
+<!-- Row 5: Completed Session -->
+
+
+                #BK-9019
+              
+
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-label-mono text-[11px] font-bold">
+                    JP
+                  </div></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium leading-none">Jordan Patel</p>
+<span class="font-caption text-caption text-outline leading-none">ID: USR-1022</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface leading-none">Ford Mustang Mach-E</p>
+<span class="font-label-mono text-caption text-outline leading-none">NY-891-MC • Ext. Range</span>
+<p class="font-label-md text-label-md text-on-surface leading-none">Baypoint Dock</p>
+<span class="font-caption text-caption text-outline leading-none">Bay 03 (120kW DC)</span>
+<p class="font-label-mono text-caption text-on-surface leading-none">12:30 → 13:12</p>
+<span class="font-caption text-caption text-outline leading-none">Total: 42 mins</span>
+<p class="font-label-mono text-label-md text-on-surface font-bold leading-none">64.5 kWh</p>
+<span class="font-caption text-caption text-outline leading-none">$18.70 (Billed)</span>
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-label-mono text-caption uppercase inline-flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  Completed
+                </span>
+<button class="inline-flex items-center gap-space-xs text-primary hover:text-primary-container font-label-md text-label-md transition-colors" onclick="showReceipt('BK-9019', 'Jordan Patel', 'Ford Mustang Mach-E', '64.5 kWh', '$18.70', 'Baypoint Dock Bay 03')">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>Receipt →</span>
+</button>
+<!-- Row 6: Completed Session -->
+
+
+                #BK-9018
+              
+
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-label-mono text-[11px] font-bold">
+                    AW
+                  </div></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium leading-none">Aria Walsh</p>
+<span class="font-caption text-caption text-outline leading-none">ID: USR-7721</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface leading-none">Lucid Air Pure</p>
+<span class="font-label-mono text-caption text-outline leading-none">CA-512-LCD • 92 kWh</span>
+<p class="font-label-md text-label-md text-on-surface leading-none">CyberHub Alpha</p>
+<span class="font-caption text-caption text-outline leading-none">Bay 05 (350kW HPC)</span>
+<p class="font-label-mono text-caption text-on-surface leading-none">11:04 → 11:31</p>
+<span class="font-caption text-caption text-outline leading-none">Total: 27 mins</span>
+<p class="font-label-mono text-label-md text-on-surface font-bold leading-none">78.2 kWh</p>
+<span class="font-caption text-caption text-outline leading-none">$23.46 (Billed)</span>
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-label-mono text-caption uppercase inline-flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  Completed
+                </span>
+<button class="inline-flex items-center gap-space-xs text-primary hover:text-primary-container font-label-md text-label-md transition-colors" onclick="showReceipt('BK-9018', 'Aria Walsh', 'Lucid Air Pure', '78.2 kWh', '$23.46', 'CyberHub Alpha Bay 05')">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>Receipt →</span>
+</button>
+<!-- Row 7: Completed Session -->
+
+
+                #BK-9014
+              
+
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-label-mono text-[11px] font-bold">
+                    TL
+                  </div></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium leading-none">Tyler Liu</p>
+<span class="font-caption text-caption text-outline leading-none">ID: USR-5231</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface leading-none">BMW i4 eDrive40</p>
+<span class="font-label-mono text-caption text-outline leading-none">FL-800-ELE • Gran Coupe</span>
+<p class="font-label-md text-label-md text-on-surface leading-none">Metro Plaza FastHub</p>
+<span class="font-caption text-caption text-outline leading-none">Bay 01 (150kW Ultra)</span>
+<p class="font-label-mono text-caption text-on-surface leading-none">09:15 → 09:52</p>
+<span class="font-caption text-caption text-outline leading-none">Total: 37 mins</span>
+<p class="font-label-mono text-label-md text-on-surface font-bold leading-none">52.4 kWh</p>
+<span class="font-caption text-caption text-outline leading-none">$15.20 (Billed)</span>
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-label-mono text-caption uppercase inline-flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  Completed
+                </span>
+<button class="inline-flex items-center gap-space-xs text-primary hover:text-primary-container font-label-md text-label-md transition-colors" onclick="showReceipt('BK-9014', 'Tyler Liu', 'BMW i4 eDrive40', '52.4 kWh', '$15.20', 'Metro Plaza Bay 01')">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>Receipt →</span>
+</button>
+<!-- Pagination HUD -->
+<div class="px-space-lg py-space-md bg-surface-container-lowest flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<span class="font-caption text-caption text-outline">
+          Showing <span class="text-on-surface font-medium">1 - 7</span> of <span class="text-on-surface font-medium">142</span> Bookings
+        </span>
+<div class="flex items-center gap-space-xs">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-primary text-on-primary font-label-mono text-caption font-semibold">1</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-mono text-caption">2</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-mono text-caption">3</button>
+<span class="font-label-mono text-caption text-outline px-1">...</span>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-mono text-caption">15</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Bottom Instant Slot Reservation Quick Panel -->
+<div class="w-full px-gutter py-space-lg">
+<div class="rounded-lg bg-surface-container-low p-space-lg shadow-sm flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">electric_bolt</span>
+</div>
+<div>
+<span class="font-label-mono text-caption text-primary uppercase tracking-wider">Algorithmic Fast Dispatch</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Instant Slot Reservation Launcher</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Allocates highest available power tap while matching vehicle BMS voltage acceptance profile.</p>
+</div>
+</div>
+<!-- Compact Inline Reservation Controls -->
+<form class="flex flex-wrap lg:flex-nowrap items-center gap-space-sm w-full lg:w-auto" id="quick-dispatch-form" onsubmit="event.preventDefault(); triggerQuickDispatch();">
+<div class="flex-1 lg:w-48">
+<label class="block font-caption text-caption text-outline uppercase mb-1">Driver</label>
+<select class="w-full px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container transition-colors cursor-pointer">
+<option value="usr-8802">Marcus Thorne (Tesla M3)</option>
+<option value="usr-4190">David Kim (Rivian R1T)</option>
+<option value="usr-3312">Elena Rostova (Ioniq 5)</option>
+<option value="usr-9041">Sarah Lin (Polestar 2)</option>
+</select>
+</div>
+<div class="flex-1 lg:w-56">
+<label class="block font-caption text-caption text-outline uppercase mb-1">Hub &amp; Tap</label>
+<select class="w-full px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container transition-colors cursor-pointer">
+<option value="cb-02">CyberHub Alpha • Bay 02 (350kW)</option>
+<option value="cb-03">CyberHub Alpha • Bay 03 (250kW)</option>
+<option value="mp-04">Metro Plaza • Bay 04 (150kW)</option>
+<option value="bp-01">Baypoint Dock • Bay 01 (120kW)</option>
+</select>
+</div>
+<div class="flex-1 lg:w-36">
+<label class="block font-caption text-caption text-outline uppercase mb-1">Target SoC</label>
+<select class="w-full px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container transition-colors cursor-pointer">
+<option value="80">80% (Fast Opt)</option>
+<option value="90">90% (Standard)</option>
+<option value="100">100% (Full Trip)</option>
+</select>
+</div>
+<div class="w-full lg:w-auto pt-5">
+<button class="w-full lg:w-auto px-space-lg py-space-xs rounded-full bg-secondary hover:bg-on-secondary-container text-on-secondary transition-colors font-headline-sm text-[13px] shadow-sm flex items-center justify-center gap-space-xs" type="submit">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Dispatch Slot</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Digital Receipt Frosted Modal (Hidden by Default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-md hidden opacity-0 transition-opacity duration-200" id="receipt-modal">
+<div class="relative w-full max-w-md rounded-lg bg-surface-container-lowest p-space-lg shadow-xl flex flex-col gap-space-md">
+<!-- Modal Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-label-mono text-caption uppercase text-outline">VoltAlloc Telemetry Receipt</span>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container text-outline hover:text-on-surface transition-colors" onclick="closeReceipt()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Receipt Content -->
+<div class="flex flex-col items-center text-center pt-space-xs">
+<span class="font-label-mono text-caption text-outline uppercase tracking-wider" id="modal-receipt-id">#BK-9019</span>
+<div class="font-telemetry-metric text-telemetry-metric text-on-surface mt-1" id="modal-receipt-amount">$18.70</div>
+<span class="px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption uppercase mt-1">Paid • Settled Via Fleet Account</span>
+</div>
+<!-- Perforated Laser Vector Line -->
+<div class="w-full flex items-center gap-2 my-space-xs">
+<div class="h-px flex-1 border-t border-dashed border-outline-variant"></div>
+<span class="font-label-mono text-[9px] text-outline uppercase">Telemetry Audit</span>
+<div class="h-px flex-1 border-t border-dashed border-outline-variant"></div>
+</div>
+<!-- Data Details -->
+<div class="flex flex-col gap-space-xs text-body-md font-body-md">
+<div class="flex justify-between items-center">
+<span class="text-outline">Driver</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold" id="modal-receipt-driver">Jordan Patel</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline">Vehicle</span>
+<span class="font-label-md text-label-md text-on-surface" id="modal-receipt-vehicle">Ford Mustang Mach-E</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline">Dispenser Bay</span>
+<span class="font-label-md text-label-md text-on-surface" id="modal-receipt-station">Baypoint Dock Bay 03</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline">Total Energy</span>
+<span class="font-label-mono text-label-md text-secondary font-bold" id="modal-receipt-energy">64.5 kWh</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline">Average Grid Rate</span>
+<span class="font-label-mono text-caption text-outline">$0.289 / kWh</span>
+</div>
+</div>
+<!-- Simulated Dynamic Allocation QR Token -->
+<div class="mt-space-xs p-space-sm rounded bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col text-left">
+<span class="font-label-mono text-[10px] text-outline uppercase">Cryptographic Token</span>
+<span class="font-label-mono text-caption text-on-surface">VLT-7718-TX-KWH</span>
+</div>
+<span class="material-symbols-outlined text-[32px] text-primary">qr_code_2</span>
+</div>
+<!-- Close / Download Receipt -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-space-xs rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-label-md" onclick="closeReceipt()">
+          Dismiss
+        </button>
+<button class="flex-1 py-space-xs rounded-full bg-primary hover:bg-primary-container text-on-primary transition-colors font-label-md text-label-md flex items-center justify-center gap-1" onclick="downloadReceiptPDF()">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Download PDF</span>
+</button>
+</div>
+</div>
+</div>
+<!-- New Reservation Drawer / Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-md hidden opacity-0 transition-opacity duration-200" id="reservation-modal">
+<div class="relative w-full max-w-lg rounded-lg bg-surface-container-lowest p-space-lg shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">New Charging Reservation</h3>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container text-outline hover:text-on-surface transition-colors" id="btn-close-reserve-modal">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Configure an upcoming high-voltage charging slot for connected fleet assets or private EV drivers.
+      </p>
+<form class="flex flex-col gap-space-md mt-space-xs" id="new-booking-form">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Driver / User</label>
+<select class="w-full px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container transition-colors" required="">
+<option value="">Select fleet driver...</option>
+<option value="Marcus Thorne">Marcus Thorne (USR-8802)</option>
+<option value="David Kim">David Kim (USR-4190)</option>
+<option value="Elena Rostova">Elena Rostova (USR-3312)</option>
+<option value="Sarah Lin">Sarah Lin (USR-9041)</option>
+<option value="Jordan Patel">Jordan Patel (USR-1022)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Assigned Vehicle</label>
+<select class="w-full px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container transition-colors" required="">
+<option value="">Select vehicle...</option>
+<option value="Tesla Model 3">Tesla Model 3 (CA-892-EV)</option>
+<option value="Rivian R1T">Rivian R1T (TX-771-KWH)</option>
+<option value="Hyundai Ioniq 5">Hyundai Ioniq 5 (OR-440-BAT)</option>
+<option value="Polestar 2">Polestar 2 (WA-109-PL)</option>
+<option value="Lucid Air Pure">Lucid Air Pure (CA-512-LCD)</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Charging Hub &amp; Bay</label>
+<select class="w-full px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container transition-colors" required="">
+<option value="CyberHub Supercharger • Bay 02">CyberHub Alpha • Bay 02 (350kW)</option>
+<option value="CyberHub Supercharger • Bay 03">CyberHub Alpha • Bay 03 (250kW)</option>
+<option value="Metro Plaza FastHub • Bay 01">Metro Plaza FastHub • Bay 01 (150kW)</option>
+<option value="Metro Plaza FastHub • Bay 03">Metro Plaza FastHub • Bay 03 (150kW)</option>
+<option value="Baypoint Dock • Bay 02">Baypoint Dock • Bay 02 (120kW)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Start Time (Slot)</label>
+<input class="w-full px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface font-label-mono text-label-md focus:outline-none focus:bg-surface-container transition-colors" required="" type="time" value="16:30"/>
+</div>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low flex items-center justify-between text-body-md font-body-md">
+<div>
+<span class="font-label-mono text-caption text-primary uppercase">Estimated Pre-Authorization</span>
+<p class="font-headline-sm text-headline-sm text-on-surface">$14.00 • ~48 kWh</p>
+</div>
+<span class="font-label-mono text-caption text-outline">Smart Reserve Guarantee</span>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-lg py-space-xs rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-md text-label-md" id="btn-cancel-reservation" type="button">
+            Cancel
+          </button>
+<button class="px-space-lg py-space-xs rounded-full bg-primary hover:bg-primary-container text-on-primary transition-colors font-headline-sm text-[13px] shadow-sm flex items-center gap-space-xs" type="submit">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Confirm &amp; Dispatch</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+  // Filter Tabs logic
+  const filterChips = document.querySelectorAll('.filter-chip');
+  const tableRows = document.querySelectorAll('#booking-rows-container tr');
+
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      filterChips.forEach(c => {
+        c.classList.remove('bg-primary-container', 'text-on-primary-container');
+        c.classList.add('text-on-surface-variant');
+      });
+      chip.classList.add('bg-primary-container', 'text-on-primary-container');
+      chip.classList.remove('text-on-surface-variant');
+
+      const filterVal = chip.getAttribute('data-filter');
+      tableRows.forEach(row => {
+        const rowStatus = row.getAttribute('data-status');
+        if (filterVal === 'all' || rowStatus === filterVal) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Search input filter
+  const searchInput = document.getElementById('booking-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      tableRows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+  }
+
+  // Emergency Halt Simulation
+  function emergencyHalt(bookingId) {
+    if (confirm(`Authorize Emergency Session Halt for ${bookingId}? Current tap flow will be safely decoupled.`)) {
+      alert(`Session ${bookingId} successfully ramped down and finalized.`);
+    }
+  }
+
+  // Start Session Simulation
+  function startSession(bookingId) {
+    alert(`Handshake initiated for ${bookingId}. High-voltage contactors engaging.`);
+  }
+
+  // Receipt Modal Logic
+  const receiptModal = document.getElementById('receipt-modal');
+
+  function showReceipt(id, driver, vehicle, energy, amount, station) {
+    document.getElementById('modal-receipt-id').innerText = '#' + id;
+    document.getElementById('modal-receipt-amount').innerText = amount;
+    document.getElementById('modal-receipt-driver').innerText = driver;
+    document.getElementById('modal-receipt-vehicle').innerText = vehicle;
+    document.getElementById('modal-receipt-energy').innerText = energy;
+    document.getElementById('modal-receipt-station').innerText = station;
+
+    receiptModal.classList.remove('hidden');
+    setTimeout(() => receiptModal.classList.remove('opacity-0'), 10);
+  }
+
+  function closeReceipt() {
+    receiptModal.classList.add('opacity-0');
+    setTimeout(() => receiptModal.classList.add('hidden'), 200);
+  }
+
+  function downloadReceiptPDF() {
+    alert('Generating signed cryptographic PDF receipt token...');
+    closeReceipt();
+  }
+
+  // Reservation Modal Logic
+  const reserveModal = document.getElementById('reservation-modal');
+  const btnOpenReserve = document.getElementById('btn-open-reserve-modal');
+  const btnCloseReserve = document.getElementById('btn-close-reserve-modal');
+  const btnCancelReserve = document.getElementById('btn-cancel-reservation');
+  const newBookingForm = document.getElementById('new-booking-form');
+
+  function openReservation() {
+    reserveModal.classList.remove('hidden');
+    setTimeout(() => reserveModal.classList.remove('opacity-0'), 10);
+  }
+
+  function closeReservation() {
+    reserveModal.classList.add('opacity-0');
+    setTimeout(() => reserveModal.classList.add('hidden'), 200);
+  }
+
+  if (btnOpenReserve) btnOpenReserve.addEventListener('click', openReservation);
+  if (btnCloseReserve) btnCloseReserve.addEventListener('click', closeReservation);
+  if (btnCancelReserve) btnCancelReserve.addEventListener('click', closeReservation);
+
+  if (newBookingForm) {
+    newBookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Reservation registered! Dispatch token injected into telemetry queue.');
+      closeReservation();
+    });
+  }
+
+  // Quick Dispatch Form Simulation
+  function triggerQuickDispatch() {
+    alert('Algorithmic Fast Dispatch Slot reserved! Driver notified via push.');
+  }
+
+  // CSV Export Mock
+  const btnExport = document.getElementById('btn-export-csv');
+  if (btnExport) {
+    btnExport.addEventListener('click', () => {
+      alert('Exporting session manifest as CSV (voltalloc-sessions-manifest.csv)...');
+    });
+  }
+</script></main><footer class="w-full bg-surface-container-lowest py-space-lg shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-gutter flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption"><span>© 2025 Smart EV Allocator</span><span>•</span><span>Java Spring Boot Core</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-mono text-caption text-on-surface-variant uppercase">Telemetry Socket Active</span></div><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="font-label-mono text-caption text-on-surface-variant uppercase">Load Balancer: OK</span></div></div></div></footer></body></html>

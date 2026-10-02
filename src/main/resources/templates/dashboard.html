@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('Telemetry Dashboard')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('dashboard')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow">
+        <div class="flex flex-col w-full">
+            <!-- Telemetry Cockpit Master Container -->
+            <div class="w-full px-gutter py-space-lg flex flex-col gap-space-lg max-w-[1600px] mx-auto">
+
+                <!-- Top Cockpit Ribbon -->
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest/80 backdrop-blur-xl p-space-lg rounded-2xl shadow-sm border border-outline-variant/20">
+                    <div class="flex flex-col gap-space-xs">
+                        <div class="flex items-center gap-space-sm flex-wrap">
+                            <span class="font-label-mono text-caption text-primary tracking-widest uppercase font-bold">Grid Telemetry Cockpit</span>
+                            <span class="text-outline-variant font-caption text-caption">•</span>
+                            <span class="font-label-mono text-caption text-secondary flex items-center gap-1.5 font-medium">
+                                <span class="inline-block w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_#006c49]"></span>
+                                GRID NORMAL • OPTIMAL FLOW SYNCHRONIZED
+                            </span>
+                        </div>
+                        <div class="flex items-baseline gap-space-md flex-wrap">
+                            <h1 class="font-display-md text-2xl lg:text-3xl text-on-surface tracking-tight font-bold">Telemetry &amp; Station Overview</h1>
+                            <div class="flex items-center gap-space-xs text-on-surface-variant">
+                                <span class="material-symbols-outlined text-[18px]">schedule</span>
+                                <span class="font-label-mono text-caption uppercase tracking-wider text-on-surface font-semibold" id="telemetry-clock">--:--:-- UTC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Action Floating Array -->
+                    <div class="flex items-center gap-space-xs sm:gap-space-sm flex-wrap">
+                        <a href="/stations/new" th:href="@{/stations/new}"
+                           class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-all text-on-surface font-label-md text-label-md shadow-sm active:scale-95">
+                            <span class="material-symbols-outlined text-[18px] text-primary">ev_station</span>
+                            <span>+ Add Station</span>
+                        </a>
+                        <a href="/users/new" th:href="@{/users/new}"
+                           class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-all text-on-surface font-label-md text-label-md shadow-sm active:scale-95">
+                            <span class="material-symbols-outlined text-[18px] text-primary">person_add</span>
+                            <span>+ Register User</span>
+                        </a>
+                        <a href="/vehicles/new" th:href="@{/vehicles/new}"
+                           class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container transition-all text-on-surface font-label-md text-label-md shadow-sm active:scale-95">
+                            <span class="material-symbols-outlined text-[18px] text-primary">directions_car</span>
+                            <span>+ Add Vehicle</span>
+                        </a>
+                        <a href="/bookings/new" th:href="@{/bookings/new}"
+                           class="flex items-center gap-space-xs px-space-lg py-space-xs rounded-full bg-primary text-on-primary hover:bg-primary-container transition-all font-headline-sm text-label-md shadow-md hover:shadow-lg active:scale-95">
+                            <span class="material-symbols-outlined text-[18px]">bolt</span>
+                            <span>New Booking</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6 Core Key Telemetric Pods -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-space-md">
+                    <!-- Metric 1: Total Stations -->
+                    <div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-caption text-on-surface-variant uppercase font-semibold">Total Stations</span>
+                            <div class="w-7 h-7 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-[16px]">ev_station</span>
+                            </div>
+                        </div>
+                        <div class="mt-space-md">
+                            <div class="font-telemetry-metric text-3xl xl:text-4xl text-on-surface leading-none tracking-tight font-bold tnum" th:text="${totalStations}">0</div>
+                            <div class="mt-space-xs flex items-center gap-space-xs font-label-mono text-caption text-primary">
+                                <span class="material-symbols-outlined text-[14px]">sensors</span>
+                                <span>Hardware Synced</span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-surface-container-low h-1.5 rounded-full mt-space-md overflow-hidden">
+                            <div class="bg-primary h-full rounded-full w-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 2: Available Slots -->
+                    <div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-caption text-on-surface-variant uppercase font-semibold">Available Slots</span>
+                            <span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption font-bold">Ready</span>
+                        </div>
+                        <div class="mt-space-md">
+                            <div class="flex items-baseline gap-space-xs">
+                                <span class="font-telemetry-metric text-3xl xl:text-4xl text-secondary leading-none tracking-tight font-bold tnum" th:text="${availableSlots}">0</span>
+                                <span class="font-headline-sm text-caption text-outline">Open Bays</span>
+                            </div>
+                            <div class="mt-space-xs font-caption text-caption text-on-surface-variant">
+                                Level 2 &amp; CCS2 Fast Ports
+                            </div>
+                        </div>
+                        <div class="w-full bg-surface-container-low h-1.5 rounded-full mt-space-md overflow-hidden">
+                            <div class="bg-secondary h-full rounded-full w-3/4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 3: Active Sessions -->
+                    <div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-caption text-on-surface-variant uppercase font-semibold">Charging Now</span>
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                            </span>
+                        </div>
+                        <div class="mt-space-md">
+                            <div class="font-telemetry-metric text-3xl xl:text-4xl text-primary leading-none tracking-tight font-bold tnum" th:text="${activeSessions}">0</div>
+                            <div class="mt-space-xs flex items-center gap-space-xs font-label-mono text-caption text-primary">
+                                <span class="material-symbols-outlined text-[14px]">bolt</span>
+                                <span>High-Voltage Active</span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-surface-container-low h-1.5 rounded-full mt-space-md overflow-hidden">
+                            <div class="bg-primary-container h-full rounded-full w-1/2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 4: Registered EVs -->
+                    <div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-caption text-on-surface-variant uppercase font-semibold">Registered EVs</span>
+                            <div class="w-7 h-7 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-[16px]">electric_car</span>
+                            </div>
+                        </div>
+                        <div class="mt-space-md">
+                            <div class="font-telemetry-metric text-3xl xl:text-4xl text-on-surface leading-none tracking-tight font-bold tnum" th:text="${totalVehicles}">0</div>
+                            <div class="mt-space-xs font-caption text-caption text-outline">
+                                Fleet &amp; Private Drivers
+                            </div>
+                        </div>
+                        <div class="w-full bg-surface-container-low h-1.5 rounded-full mt-space-md overflow-hidden">
+                            <div class="bg-surface-tint h-full rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 5: Registered Users -->
+                    <div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-caption text-on-surface-variant uppercase font-semibold">Active Drivers</span>
+                            <div class="w-7 h-7 rounded-full bg-surface-container-low flex items-center justify-center text-outline">
+                                <span class="material-symbols-outlined text-[16px]">groups</span>
+                            </div>
+                        </div>
+                        <div class="mt-space-md">
+                            <div class="font-telemetry-metric text-3xl xl:text-4xl text-on-surface leading-none tracking-tight font-bold tnum" th:text="${totalUsers}">0</div>
+                            <div class="mt-space-xs font-caption text-caption text-outline">
+                                Verified Auth Accounts
+                            </div>
+                        </div>
+                        <div class="w-full bg-surface-container-low h-1.5 rounded-full mt-space-md overflow-hidden">
+                            <div class="bg-outline h-full rounded-full w-3/5"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 6: Completed Sessions -->
+                    <div class="relative overflow-hidden bg-surface-container-lowest/80 backdrop-blur-md p-space-md rounded-2xl flex flex-col justify-between shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <span class="font-label-mono text-caption text-on-surface-variant uppercase font-semibold">Dispatched Total</span>
+                            <div class="w-7 h-7 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                                <span class="material-symbols-outlined text-[16px]">task_alt</span>
+                            </div>
+                        </div>
+                        <div class="mt-space-md">
+                            <div class="font-telemetry-metric text-3xl xl:text-4xl text-on-surface leading-none tracking-tight font-bold tnum" th:text="${completedSessions}">0</div>
+                            <div class="mt-space-xs font-caption text-caption text-secondary flex items-center gap-1 font-medium">
+                                <span class="material-symbols-outlined text-[14px]">receipt</span>
+                                <span>Receipts Settled</span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-surface-container-low h-1.5 rounded-full mt-space-md overflow-hidden">
+                            <div class="bg-secondary h-full rounded-full w-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Layout Dual Pod: Recent Bookings Feed & Stations Grid Snapshot -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+                    <!-- Left: Recent Charging Bookings & Telemetry Feed (7 cols) -->
+                    <div class="lg:col-span-7 flex flex-col gap-space-md bg-surface-container-lowest/80 backdrop-blur-xl p-space-lg rounded-2xl shadow-sm border border-outline-variant/20">
+                        <div class="flex items-center justify-between pb-space-xs">
+                            <div class="flex items-center gap-space-xs">
+                                <span class="material-symbols-outlined text-primary text-[22px]">history</span>
+                                <h3 class="font-headline-sm text-lg text-on-surface font-semibold">Recent Charging Allocations</h3>
+                            </div>
+                            <a href="/bookings" th:href="@{/bookings}" class="font-label-mono text-caption uppercase text-primary hover:underline font-bold flex items-center gap-1">
+                                <span>View All</span>
+                                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                            </a>
+                        </div>
+
+                        <!-- Bookings Table -->
+                        <div class="overflow-x-auto no-scrollbar">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-surface-container font-label-mono text-caption uppercase text-outline">
+                                        <th class="py-space-xs px-space-sm">ID</th>
+                                        <th class="py-space-xs px-space-sm">Vehicle / Driver</th>
+                                        <th class="py-space-xs px-space-sm">Station</th>
+                                        <th class="py-space-xs px-space-sm">Status</th>
+                                        <th class="py-space-xs px-space-sm text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-surface-container-low text-sm font-body-md">
+                                    <tr th:each="b : ${recentBookings}" class="hover:bg-surface-container-low/50 transition-colors">
+                                        <td class="py-space-sm px-space-sm font-label-mono text-caption text-outline font-bold" th:text="'#BK-' + ${b.bookingId}">#BK-1</td>
+                                        <td class="py-space-sm px-space-sm">
+                                            <div class="font-semibold text-on-surface" th:text="${b.vehicle != null ? b.vehicle.model : 'EV Vehicle'}">Tesla Model 3</div>
+                                            <div class="text-xs text-outline flex items-center gap-1">
+                                                <span th:text="${b.user != null ? b.user.name : 'Driver'}">John Doe</span>
+                                                <span>•</span>
+                                                <span class="font-mono text-primary font-medium" th:text="${b.vehicle != null ? b.vehicle.registrationNumber : ''}">REG</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-space-sm px-space-sm">
+                                            <div class="text-on-surface font-medium" th:text="${b.station != null ? b.station.stationName : 'Station'}">GreenCharge</div>
+                                            <div class="text-xs text-outline" th:text="${b.station != null ? b.station.location : ''}">Downtown</div>
+                                        </td>
+                                        <td class="py-space-sm px-space-sm">
+                                            <span th:if="${b.status == 'CHARGING'}" class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-primary/10 text-primary font-label-mono text-caption font-bold">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                                                CHARGING
+                                            </span>
+                                            <span th:if="${b.status == 'RESERVED'}" class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-amber-500/10 text-amber-600 font-label-mono text-caption font-bold">
+                                                RESERVED
+                                            </span>
+                                            <span th:if="${b.status == 'COMPLETED'}" class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption font-bold">
+                                                COMPLETED
+                                            </span>
+                                        </td>
+                                        <td class="py-space-sm px-space-sm text-right">
+                                            <a th:if="${b.status == 'CHARGING'}" th:href="@{/bookings/stop/{id}(id=${b.bookingId})}"
+                                               class="px-space-md py-1 rounded-full bg-error text-on-error font-label-md text-xs hover:opacity-90 shadow-sm transition-all">
+                                                Stop
+                                            </a>
+                                            <a th:if="${b.status == 'RESERVED'}" th:href="@{/bookings/start/{id}(id=${b.bookingId})}"
+                                               class="px-space-md py-1 rounded-full bg-secondary text-on-secondary font-label-md text-xs hover:opacity-90 shadow-sm transition-all">
+                                                Start
+                                            </a>
+                                            <a th:if="${b.status == 'COMPLETED'}" th:href="@{/bookings/receipt/{id}(id=${b.bookingId})}"
+                                               class="px-space-md py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-xs transition-all">
+                                                Receipt
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${#lists.isEmpty(recentBookings)}">
+                                        <td colspan="5" class="py-8 text-center text-outline">
+                                            No active bookings. <a href="/bookings/new" class="text-primary font-medium hover:underline">Reserve the first slot!</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: Station Infrastructure Grid Snapshot (5 cols) -->
+                    <div class="lg:col-span-5 flex flex-col gap-space-md bg-surface-container-lowest/80 backdrop-blur-xl p-space-lg rounded-2xl shadow-sm border border-outline-variant/20">
+                        <div class="flex items-center justify-between pb-space-xs">
+                            <div class="flex items-center gap-space-xs">
+                                <span class="material-symbols-outlined text-secondary text-[22px]">ev_station</span>
+                                <h3 class="font-headline-sm text-lg text-on-surface font-semibold">Active Grid Depots</h3>
+                            </div>
+                            <a href="/stations" th:href="@{/stations}" class="font-label-mono text-caption uppercase text-primary hover:underline font-bold flex items-center gap-1">
+                                <span>Browse Grid</span>
+                                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                            </a>
+                        </div>
+
+                        <!-- Station mini cards list -->
+                        <div class="flex flex-col gap-space-sm">
+                            <div th:each="station : ${stations}" class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between">
+                                <div class="flex items-center gap-space-md min-w-0">
+                                    <div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm shrink-0">
+                                        <span class="material-symbols-outlined text-[20px]">ev_station</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <h4 class="font-headline-sm text-label-md text-on-surface font-semibold truncate" th:text="${station.stationName}">Station Name</h4>
+                                        <span class="font-caption text-caption text-outline block truncate">
+                                            <span th:text="${station.location}">Location</span> •
+                                            <span th:text="${station.chargingType}">DC Fast</span> •
+                                            <span class="text-secondary font-semibold" th:text="'$' + ${station.pricePerKwh} + '/kWh'">$15/kWh</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end gap-1 shrink-0">
+                                    <span th:if="${station.status == 'AVAILABLE'}" class="px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption font-bold">
+                                        <span th:text="${station.availableSlots}">5</span> Slots Free
+                                    </span>
+                                    <span th:if="${station.status == 'FULL'}" class="px-space-sm py-0.5 rounded-full bg-error-container text-on-error-container font-label-mono text-caption font-bold">
+                                        Bays Full
+                                    </span>
+                                    <span th:if="${station.status == 'MAINTENANCE'}" class="px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-mono text-caption font-bold">
+                                        Maintenance
+                                    </span>
+                                    <a href="/bookings/new" th:href="@{/bookings/new(stationId=${station.stationId})}" class="text-xs text-primary font-medium hover:underline">
+                                        Reserve Bay &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                            <div th:if="${#lists.isEmpty(stations)}" class="py-8 text-center text-outline">
+                                No charging stations registered yet.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <!-- Live Telemetry Clock Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const updateClock = () => {
+                const now = new Date();
+                const el = document.getElementById("telemetry-clock");
+                if (el) {
+                    el.textContent = now.toLocaleTimeString("en-US", {
+                        hour12: false,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit"
+                    }) + " UTC";
+                }
+            };
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+    </script>
+</body>
+</html>

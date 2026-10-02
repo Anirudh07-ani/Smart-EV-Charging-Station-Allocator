@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('Driver & Fleet Authentication')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('login')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow flex items-center justify-center py-space-xl relative overflow-hidden">
+        <!-- Ambient Glow Orbs -->
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-primary-fixed/30 via-surface-container/20 to-transparent blur-3xl pointer-events-none rounded-full"></div>
+        <div class="absolute -bottom-20 right-1/4 w-80 h-80 bg-secondary/10 blur-3xl pointer-events-none rounded-full"></div>
+
+        <div class="w-full px-gutter max-w-md mx-auto relative z-10">
+            <!-- Login Card -->
+            <div class="rounded-2xl bg-surface-container-lowest shadow-xl border border-outline-variant/30 p-space-lg sm:p-space-xl overflow-hidden flex flex-col">
+                <!-- Branding Header -->
+                <div class="flex flex-col items-center text-center mb-space-lg">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-on-primary shadow-md mb-space-sm">
+                        <span class="material-symbols-outlined text-[30px]">bolt</span>
+                    </div>
+                    <span class="font-label-mono text-caption uppercase text-primary tracking-widest font-bold">VOLTALLOC TELEMETRICS</span>
+                    <h2 class="font-display-md text-2xl text-on-surface font-bold mt-1">Fleet Login</h2>
+                    <p class="font-body-md text-sm text-on-surface-variant mt-1">Authenticate to access charging dispatch &amp; telemetry.</p>
+                </div>
+
+                <!-- Alert Messages -->
+                <div th:if="${error}" class="mb-space-md p-space-sm px-space-md rounded-xl bg-error-container text-on-error-container text-xs font-body-md flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">error</span>
+                    <span th:text="${error}">Invalid email or password</span>
+                </div>
+                <div th:if="${successMessage}" class="mb-space-md p-space-sm px-space-md rounded-xl bg-secondary-container text-on-secondary-container text-xs font-body-md flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                    <span th:text="${successMessage}">Logged out successfully</span>
+                </div>
+
+                <!-- Login Form -->
+                <form action="/login" method="post" class="flex flex-col gap-space-md">
+                    <!-- Email -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Account Email</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">mail</span>
+                            <input type="email" id="login-email" name="email" required placeholder="driver@example.com"
+                                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Security Credential</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">key</span>
+                            <input type="password" id="login-password" name="password" required placeholder="••••••••"
+                                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit"
+                            class="w-full mt-space-xs py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <span>Authenticate &amp; Enter Cockpit</span>
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </form>
+
+                <!-- Demo Credentials Quick-Fill Helper -->
+                <div class="mt-space-md p-space-sm rounded-xl bg-surface-container-low border border-outline-variant/20 flex items-center justify-between">
+                    <div class="flex flex-col text-xs">
+                        <span class="font-label-mono text-[10px] uppercase text-outline font-bold">Demo Fleet Driver</span>
+                        <span class="font-mono text-on-surface-variant text-[11px]">john@example.com / password</span>
+                    </div>
+                    <button type="button" onclick="fillDemoCredentials()"
+                            class="px-space-sm py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-primary font-label-mono text-[10px] uppercase font-bold transition-colors">
+                        Auto-Fill
+                    </button>
+                </div>
+
+                <!-- Footer Link -->
+                <div class="mt-space-md text-center">
+                    <p class="font-body-md text-xs text-on-surface-variant">
+                        Don't have a registered EV account?
+                        <a href="/register" th:href="@{/register}" class="text-primary font-semibold hover:underline">Register here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script>
+        function fillDemoCredentials() {
+            document.getElementById('login-email').value = 'john@example.com';
+            document.getElementById('login-password').value = 'password';
+        }
+    </script>
+</body>
+</html>

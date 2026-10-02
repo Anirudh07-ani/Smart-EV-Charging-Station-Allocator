@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('Charging Dispatch & Bookings')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('bookings')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow">
+        <div class="flex flex-col w-full">
+            <div class="w-full px-gutter py-space-xl max-w-7xl mx-auto flex flex-col gap-space-xl">
+
+                <!-- Top Telemetrics Header Bar -->
+                <div class="w-full flex flex-col gap-space-md">
+                    <!-- Breadcrumb & Diagnostic Pulse -->
+                    <div class="flex flex-wrap items-center justify-between gap-space-sm">
+                        <div class="flex items-center gap-space-xs font-label-mono text-caption uppercase tracking-wider text-outline">
+                            <span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-primary font-semibold">Telemetrics &amp; Sessions</span>
+                            <span>/</span>
+                            <span>Dispatched Operations</span>
+                        </div>
+                        <div class="flex items-center gap-space-md">
+                            <div class="flex items-center gap-space-xs">
+                                <span class="relative flex h-2 w-2">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                                </span>
+                                <span class="font-label-mono text-caption text-secondary uppercase tracking-wider font-semibold">Dynamic Load Balancer Active</span>
+                            </div>
+                            <div class="h-3 w-px bg-outline-variant/40 hidden sm:block"></div>
+                            <span class="font-label-mono text-caption text-on-surface-variant hidden sm:inline">Grid Frequency: 60.02 Hz</span>
+                        </div>
+                    </div>
+
+                    <!-- Title & Action Button -->
+                    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+                        <div class="max-w-3xl">
+                            <h1 class="font-display-md text-3xl sm:text-4xl text-on-surface tracking-tight font-bold">
+                                Charging Bookings &amp; Sessions
+                            </h1>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+                                Manage dynamic station reservations, monitor real-time high-voltage telemetry, and audit algorithmic dispatch receipts.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-space-sm shrink-0">
+                            <a href="/bookings/new" th:href="@{/bookings/new}"
+                               class="flex items-center gap-space-xs px-space-xl py-space-md rounded-full bg-primary hover:bg-primary-container text-on-primary transition-all shadow-md hover:shadow-lg font-headline-sm text-sm">
+                                <span class="material-symbols-outlined text-[20px]">add_circle</span>
+                                <span>+ New Reservation</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Live Telemetry Pods (Highlighted Active Sessions) -->
+                <div class="w-full">
+                    <div class="flex items-center justify-between mb-space-sm">
+                        <div class="flex items-center gap-space-xs">
+                            <span class="material-symbols-outlined text-secondary text-[22px]">bolt</span>
+                            <h2 class="font-headline-sm text-lg text-on-surface font-semibold">Real-Time Dispatch Feed</h2>
+                        </div>
+                        <span class="font-label-mono text-caption text-outline uppercase tracking-wider">Streaming Live • Algorithmic Balance</span>
+                    </div>
+
+                    <!-- Search & Filter Badges Bar -->
+                    <div class="p-space-sm rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-space-md mb-space-lg">
+                        <div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar w-full md:w-auto py-space-xs">
+                            <button onclick="filterBookings('all')" class="booking-filter px-space-md py-space-xs rounded-full bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm" data-status="all">
+                                All Bookings
+                            </button>
+                            <button onclick="filterBookings('CHARGING')" class="booking-filter px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors flex items-center gap-1.5" data-status="CHARGING">
+                                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                Charging Live
+                            </button>
+                            <button onclick="filterBookings('RESERVED')" class="booking-filter px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors" data-status="RESERVED">
+                                Reserved
+                            </button>
+                            <button onclick="filterBookings('COMPLETED')" class="booking-filter px-space-md py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors" data-status="COMPLETED">
+                                Completed
+                            </button>
+                        </div>
+                        <div class="relative w-full md:w-80">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+                            <input type="text" id="booking-search" oninput="searchBookings(event)" placeholder="Search driver, vehicle, station..."
+                                   class="w-full pl-9 pr-4 py-space-xs rounded-full bg-surface-container text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"/>
+                        </div>
+                    </div>
+
+                    <!-- Bookings Table HUD -->
+                    <div class="rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/20 p-space-lg overflow-hidden">
+                        <div class="overflow-x-auto no-scrollbar">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-surface-container font-label-mono text-caption uppercase text-outline">
+                                        <th class="py-space-sm px-space-md">Dispatch ID</th>
+                                        <th class="py-space-sm px-space-md">Driver Account</th>
+                                        <th class="py-space-sm px-space-md">Vehicle Plate</th>
+                                        <th class="py-space-sm px-space-md">Station &amp; Slot</th>
+                                        <th class="py-space-sm px-space-md">Live Status</th>
+                                        <th class="py-space-sm px-space-md">Energy / Billed</th>
+                                        <th class="py-space-sm px-space-md text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-surface-container-low font-body-md text-sm" id="bookings-table-body">
+                                    <tr th:each="b : ${bookings}" class="booking-row hover:bg-surface-container-low/50 transition-colors" th:data-status="${b.status}">
+                                        <td class="py-space-md px-space-md font-label-mono text-caption text-outline font-bold" th:text="'#BK-' + ${b.bookingId}">#BK-1</td>
+                                        <td class="py-space-md px-space-md">
+                                            <div class="flex items-center gap-space-xs">
+                                                <div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-primary text-xs font-bold">
+                                                    <span class="material-symbols-outlined text-[16px]">person</span>
+                                                </div>
+                                                <div>
+                                                    <span class="font-semibold text-on-surface block" th:text="${b.user != null ? b.user.name : 'Unknown User'}">Marcus Kim</span>
+                                                    <span class="font-caption text-caption text-outline" th:text="${b.user != null ? b.user.email : ''}">m.kim@fleet.com</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-space-md px-space-md">
+                                            <div class="flex flex-col">
+                                                <span class="font-semibold text-on-surface" th:text="${b.vehicle != null ? b.vehicle.model : 'EV'}">Tesla Model 3</span>
+                                                <span class="inline-block px-2 py-0.5 rounded bg-inverse-surface text-inverse-on-surface font-mono text-xs w-max mt-0.5 font-bold"
+                                                      th:text="${b.vehicle != null ? b.vehicle.registrationNumber : 'N/A'}">
+                                                    CA-892-EV
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="py-space-md px-space-md">
+                                            <div>
+                                                <span class="font-semibold text-on-surface block" th:text="${b.station != null ? b.station.stationName : 'Station'}">CyberHub Alpha</span>
+                                                <span class="font-caption text-caption text-outline">
+                                                    <span th:text="${b.station != null ? b.station.location : ''}">Downtown</span>
+                                                    <span th:if="${b.slotNumber != null}" th:text="' • Bay #' + ${b.slotNumber}"> • Bay #4</span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="py-space-md px-space-md">
+                                            <span th:if="${b.status == 'CHARGING'}" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-primary/10 text-primary font-label-mono text-caption uppercase font-bold">
+                                                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                                CHARGING LIVE
+                                            </span>
+                                            <span th:if="${b.status == 'RESERVED'}" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-amber-500/10 text-amber-600 font-label-mono text-caption uppercase font-bold">
+                                                RESERVED
+                                            </span>
+                                            <span th:if="${b.status == 'COMPLETED'}" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption uppercase font-bold">
+                                                COMPLETED
+                                            </span>
+                                        </td>
+                                        <td class="py-space-md px-space-md">
+                                            <div th:if="${b.amountBilled != null and b.amountBilled > 0}">
+                                                <span class="font-headline-sm text-sm font-bold text-on-surface" th:text="'$' + ${#numbers.formatDecimal(b.amountBilled, 1, 2)}">$17.22</span>
+                                                <span class="block text-xs text-outline font-label-mono" th:if="${b.energyConsumed != null}" th:text="${#numbers.formatDecimal(b.energyConsumed, 1, 1)} + ' kWh'">14.2 kWh</span>
+                                            </div>
+                                            <div th:if="${b.amountBilled == null or b.amountBilled == 0}" class="text-xs text-outline font-label-mono">
+                                                Active Rate
+                                            </div>
+                                        </td>
+                                        <td class="py-space-md px-space-md text-right">
+                                            <div class="flex items-center justify-end gap-space-xs">
+                                                <a th:if="${b.status == 'RESERVED'}" th:href="@{/bookings/start/{id}(id=${b.bookingId})}"
+                                                   class="px-space-md py-1.5 rounded-full bg-secondary text-on-secondary hover:bg-secondary/90 font-headline-sm text-xs shadow-sm transition-all flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-[16px]">play_arrow</span>
+                                                    <span>Start Session</span>
+                                                </a>
+                                                <a th:if="${b.status == 'CHARGING'}" th:href="@{/bookings/stop/{id}(id=${b.bookingId})}"
+                                                   class="px-space-md py-1.5 rounded-full bg-error text-on-error hover:bg-error/90 font-headline-sm text-xs shadow-sm transition-all flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-[16px]">stop</span>
+                                                    <span>Stop &amp; Settle</span>
+                                                </a>
+                                                <a th:if="${b.status == 'COMPLETED'}" th:href="@{/bookings/receipt/{id}(id=${b.bookingId})}"
+                                                   class="px-space-md py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-xs transition-all flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-[16px] text-outline">receipt</span>
+                                                    <span>Digital Receipt</span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${#lists.isEmpty(bookings)}">
+                                        <td colspan="7" class="py-12 text-center text-outline">
+                                            No booking transactions recorded. <a href="/bookings/new" class="text-primary font-medium hover:underline">Reserve a slot now!</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script>
+        function filterBookings(status) {
+            const rows = document.querySelectorAll('.booking-row');
+            const buttons = document.querySelectorAll('.booking-filter');
+
+            buttons.forEach(b => {
+                b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+            });
+            const activeBtn = document.querySelector(`.booking-filter[data-status="${status}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                activeBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            }
+
+            rows.forEach(row => {
+                const s = row.getAttribute('data-status');
+                if (status === 'all' || s === status) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        }
+
+        function searchBookings(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const rows = document.querySelectorAll('.booking-row');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

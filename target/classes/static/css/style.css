@@ -1,0 +1,48 @@
+/* Kinetic Horizon Design System Global Styles */
+:root {
+    --primary: #006194;
+    --primary-container: #007bb9;
+    --secondary: #006c49;
+    --secondary-container: #6cf8bb;
+    --tertiary: #b61722;
+    --surface: #faf8ff;
+    --on-surface: #131b2e;
+    --outline: #707881;
+}
+
+body {
+    background-color: #faf8ff;
+    color: #131b2e;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Tabular figures for numbers */
+.tnum {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Print styling for digital receipts */
+@media print {
+    header, footer, nav, button, a[href^="/bookings"] {
+        display: none !important;
+    }
+    body, main {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .shadow-xl, .shadow-md, .shadow-sm {
+        box-shadow: none !important;
+    }
+    .rounded-2xl {
+        border-radius: 8px !important;
+    }
+}

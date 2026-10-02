@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run Smart EV Allocator",
+            "request": "launch",
+            "mainClass": "com.smartev.SmartEvAllocatorApplication",
+            "projectName": "smart-ev-allocator",
+            "args": "",
+            "vmArgs": "",
+            "env": {
+                "SPRING_PROFILES_ACTIVE": "default"
+            }
+        },
+        {
+            "type": "java",
+            "name": "Debug Smart EV Allocator",
+            "request": "launch",
+            "mainClass": "com.smartev.SmartEvAllocatorApplication",
+            "projectName": "smart-ev-allocator",
+            "args": "",
+            "vmArgs": "-Dspring.profiles.active=default"
+        }
+    ]
+}

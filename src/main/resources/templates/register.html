@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('Driver Registration')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('register')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow flex items-center justify-center py-space-xl relative overflow-hidden">
+        <!-- Ambient Glow Orbs -->
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-primary-fixed/30 via-surface-container/20 to-transparent blur-3xl pointer-events-none rounded-full"></div>
+
+        <div class="w-full px-gutter max-w-md mx-auto relative z-10">
+            <!-- Register Card -->
+            <div class="rounded-2xl bg-surface-container-lowest shadow-xl border border-outline-variant/30 p-space-lg sm:p-space-xl overflow-hidden flex flex-col">
+                <!-- Branding Header -->
+                <div class="flex flex-col items-center text-center mb-space-lg">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-secondary to-secondary-container flex items-center justify-center text-on-secondary shadow-md mb-space-sm">
+                        <span class="material-symbols-outlined text-[30px]">person_add</span>
+                    </div>
+                    <span class="font-label-mono text-caption uppercase text-secondary tracking-widest font-bold">VOLTALLOC TELEMETRICS</span>
+                    <h2 class="font-display-md text-2xl text-on-surface font-bold mt-1">Driver Registration</h2>
+                    <p class="font-body-md text-sm text-on-surface-variant mt-1">Create an authorized EV driver identity.</p>
+                </div>
+
+                <!-- Registration Form -->
+                <form action="/users/save" method="post" class="flex flex-col gap-space-md">
+                    <!-- Full Name -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Full Legal Name</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">badge</span>
+                            <input type="text" name="name" required placeholder="Marcus Kim"
+                                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Driver Email</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">mail</span>
+                            <input type="email" name="email" required placeholder="m.kim@fleet.com"
+                                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Contact Phone</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">call</span>
+                            <input type="text" name="phone" required placeholder="+1 (555) 302-8819"
+                                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold">Security Password</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">key</span>
+                            <input type="password" name="password" required placeholder="••••••••"
+                                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit"
+                            class="w-full mt-space-xs py-space-sm rounded-full bg-secondary hover:bg-secondary-container text-on-secondary hover:text-on-secondary-container font-headline-sm text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <span>Register &amp; Provision Identity</span>
+                        <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+                    </button>
+                </form>
+
+                <!-- Footer Link -->
+                <div class="mt-space-md text-center">
+                    <p class="font-body-md text-xs text-on-surface-variant">
+                        Already have credentials?
+                        <a href="/login" th:href="@{/login}" class="text-primary font-semibold hover:underline">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

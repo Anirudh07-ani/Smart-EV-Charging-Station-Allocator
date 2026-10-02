@@ -1,0 +1,16 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.jdt.ls.java.home": "C:\\Users\\User\\New folder",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-21",
+            "path": "C:\\Users\\User\\New folder",
+            "default": true
+        }
+    ],
+    "maven.executable.path": "${workspaceFolder}\\apache-maven-3.9.6\\bin\\mvn.cmd",
+    "java.configuration.maven.userSettings": null,
+    "java.import.maven.enabled": true,
+    "spring-boot.ls.java.home": "C:\\Users\\User\\New folder",
+    "java.server.launchMode": "Standard"
+}

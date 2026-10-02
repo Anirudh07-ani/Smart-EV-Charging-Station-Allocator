@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('Reserve Charging Slot')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('bookings')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow flex items-center justify-center py-space-xl">
+        <div class="w-full px-gutter max-w-xl mx-auto">
+            <!-- Breadcrumb Navigation -->
+            <div class="mb-space-md flex items-center gap-space-xs font-label-mono text-caption uppercase text-outline">
+                <a href="/bookings" th:href="@{/bookings}" class="hover:text-primary transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Back to Bookings</span>
+                </a>
+            </div>
+
+            <!-- Form Card Container -->
+            <div class="relative rounded-2xl bg-surface-container-lowest shadow-xl border border-outline-variant/30 p-space-lg sm:p-space-xl overflow-hidden">
+                <!-- Ambient Subtle Glow Accent -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+
+                <!-- Header -->
+                <div class="flex items-center gap-space-sm mb-space-lg pb-space-md border-b border-surface-container-low">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0">
+                        <span class="material-symbols-outlined text-[26px]">bolt</span>
+                    </div>
+                    <div>
+                        <h2 class="font-display-md text-2xl text-on-surface font-bold">Reserve Charging Bay</h2>
+                        <p class="font-body-md text-sm text-on-surface-variant">Autonomous slot dispatch and real-time power routing.</p>
+                    </div>
+                </div>
+
+                <!-- Step Flow Indicator -->
+                <div class="flex items-center justify-between px-space-md mb-space-lg py-space-xs bg-surface-container-low rounded-xl text-xs font-label-mono uppercase font-bold text-outline">
+                    <span class="flex items-center gap-1 text-primary">
+                        <span class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center text-[10px]">1</span>
+                        <span>Driver</span>
+                    </span>
+                    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                    <span class="flex items-center gap-1 text-secondary">
+                        <span class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[10px]">2</span>
+                        <span>EV</span>
+                    </span>
+                    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                    <span class="flex items-center gap-1 text-primary-container">
+                        <span class="w-5 h-5 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[10px]">3</span>
+                        <span>Station</span>
+                    </span>
+                </div>
+
+                <!-- Error Message if any -->
+                <div th:if="${errorMessage}" class="mb-space-md p-space-md rounded-xl bg-error-container text-on-error-container text-sm font-body-md flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">warning</span>
+                    <span th:text="${errorMessage}">Error occurred</span>
+                </div>
+
+                <!-- Form -->
+                <form th:action="@{/bookings/save}" th:object="${booking}" method="post" class="flex flex-col gap-space-md">
+                    <!-- User Selection -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[16px]">person</span>
+                            <span>Select Driver Account</span>
+                        </label>
+                        <select id="userSelect" th:field="*{user.userId}" onchange="filterVehiclesByUser()" required
+                                class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md cursor-pointer">
+                            <option value="">-- Choose Verified Driver --</option>
+                            <option th:each="u : ${users}" th:value="${u.userId}" th:text="${u.name} + ' (' + ${u.email} + ')'"></option>
+                        </select>
+                    </div>
+
+                    <!-- Vehicle Selection -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[16px]">electric_car</span>
+                            <span>Select Electric Vehicle</span>
+                        </label>
+                        <select id="vehicleSelect" th:field="*{vehicle.vehicleId}" required
+                                class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md cursor-pointer">
+                            <option value="">-- Choose Registered EV --</option>
+                            <option th:each="v : ${vehicles}"
+                                    th:value="${v.vehicleId}"
+                                    th:data-userid="${v.user != null ? v.user.userId : ''}"
+                                    th:text="${v.model} + ' [' + ${v.registrationNumber} + '] - ' + ${v.batteryCapacity} + ' kWh (' + ${v.user != null ? v.user.name : ''} + ')'">
+                            </option>
+                        </select>
+                        <span class="text-[11px] text-outline" id="vehicle-hint">Select a driver first to filter their paired vehicles.</span>
+                    </div>
+
+                    <!-- Station Selection -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="font-label-mono text-caption uppercase text-outline font-semibold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[16px]">ev_station</span>
+                            <span>Select Charging Station Depot</span>
+                        </label>
+                        <select th:field="*{station.stationId}" required
+                                class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md cursor-pointer">
+                            <option value="">-- Choose Available Station --</option>
+                            <option th:each="s : ${stations}" th:value="${s.stationId}"
+                                    th:text="${s.stationName} + ' (' + ${s.location} + ') - ' + ${s.chargingType} + ' - ' + ${s.availableSlots} + ' bays free'"
+                                    th:disabled="${s.availableSlots == 0 or s.status == 'MAINTENANCE'}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center justify-between pt-space-lg mt-space-sm border-t border-surface-container-low">
+                        <a href="/bookings" th:href="@{/bookings}"
+                           class="px-space-lg py-space-sm rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-sm transition-colors">
+                            Cancel
+                        </a>
+                        <button type="submit"
+                                class="px-space-xl py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[18px]">bolt</span>
+                            <span>Confirm &amp; Allocate Bay</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script>
+        function filterVehiclesByUser() {
+            const userSelect = document.getElementById('userSelect');
+            const vehicleSelect = document.getElementById('vehicleSelect');
+            const selectedUserId = userSelect.value;
+            const options = vehicleSelect.querySelectorAll('option');
+
+            let matchingCount = 0;
+            options.forEach(opt => {
+                if (!opt.value) return; // skip default placeholder
+                const optUserId = opt.getAttribute('data-userid');
+                if (!selectedUserId || optUserId === selectedUserId) {
+                    opt.style.display = '';
+                    matchingCount++;
+                } else {
+                    opt.style.display = 'none';
+                }
+            });
+
+            // If selected vehicle is hidden, reset it
+            const currentSelected = vehicleSelect.options[vehicleSelect.selectedIndex];
+            if (currentSelected && currentSelected.style.display === 'none') {
+                vehicleSelect.value = '';
+            }
+
+            // Auto-select first matching vehicle if only 1 exists
+            if (selectedUserId && matchingCount === 1) {
+                const firstMatch = Array.from(options).find(opt => opt.value && opt.getAttribute('data-userid') === selectedUserId);
+                if (firstMatch) vehicleSelect.value = firstMatch.value;
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (document.getElementById('userSelect').value) {
+                filterVehiclesByUser();
+            }
+        });
+    </script>
+</body>
+</html>

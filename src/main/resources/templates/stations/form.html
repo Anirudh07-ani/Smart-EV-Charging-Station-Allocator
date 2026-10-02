@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('Station Configuration')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('stations')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow flex items-center justify-center py-space-xl">
+        <div class="w-full px-gutter max-w-2xl mx-auto">
+            <!-- Breadcrumb Navigation -->
+            <div class="mb-space-md flex items-center gap-space-xs font-label-mono text-caption uppercase text-outline">
+                <a href="/stations" th:href="@{/stations}" class="hover:text-primary transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span>Back to Stations</span>
+                </a>
+            </div>
+
+            <!-- Form Card Container -->
+            <div class="relative rounded-2xl bg-surface-container-lowest shadow-xl border border-outline-variant/30 p-space-lg sm:p-space-xl overflow-hidden">
+                <!-- Ambient Subtle Glow Accent -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+
+                <!-- Header -->
+                <div class="flex items-center gap-space-sm mb-space-lg pb-space-md border-b border-surface-container-low">
+                    <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary shadow-sm shrink-0">
+                        <span class="material-symbols-outlined text-[26px]">ev_station</span>
+                    </div>
+                    <div>
+                        <h2 class="font-display-md text-2xl text-on-surface font-bold"
+                            th:text="${station.stationId != null ? 'Edit Charging Station' : 'Deploy Charging Station'}">
+                            Deploy Charging Station
+                        </h2>
+                        <p class="font-body-md text-sm text-on-surface-variant">Configure station telemetry parameters, port bays, and pricing tariffs.</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form th:action="@{/stations/save}" th:object="${station}" method="post" class="flex flex-col gap-space-md">
+                    <input type="hidden" th:field="*{stationId}"/>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                        <!-- Station Name -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Station Name</label>
+                            <input type="text" th:field="*{stationName}" required placeholder="e.g. CyberHub Supercharger Alpha"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">City / Location</label>
+                            <input type="text" th:field="*{location}" required placeholder="e.g. Innovation District, Sector 4"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline/60 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                        <!-- Total Slots -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Total Charging Slots</label>
+                            <input type="number" min="1" th:field="*{numberOfSlots}" required placeholder="5"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+
+                        <!-- Available Slots -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Available Free Slots</label>
+                            <input type="number" min="0" th:field="*{availableSlots}" required placeholder="5"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+                        <!-- Charging Type -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Port Standard</label>
+                            <select th:field="*{chargingType}" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md cursor-pointer">
+                                <option value="DC Fast Charging">DC Fast (350kW)</option>
+                                <option value="AC">AC (Level 2)</option>
+                            </select>
+                        </div>
+
+                        <!-- Price per kWh -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Price per kWh ($)</label>
+                            <input type="number" step="0.01" min="0" th:field="*{pricePerKwh}" required placeholder="12.50"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md"/>
+                        </div>
+
+                        <!-- Station Status -->
+                        <div class="flex flex-col gap-1.5">
+                            <label class="font-label-mono text-caption uppercase text-outline font-semibold">Operational Status</label>
+                            <select th:field="*{status}" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-body-md cursor-pointer">
+                                <option value="AVAILABLE">AVAILABLE</option>
+                                <option value="FULL">FULL</option>
+                                <option value="MAINTENANCE">MAINTENANCE</option>
+                                <option value="INACTIVE">INACTIVE</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center justify-between pt-space-lg mt-space-sm border-t border-surface-container-low">
+                        <a href="/stations" th:href="@{/stations}"
+                           class="px-space-lg py-space-sm rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-sm transition-colors">
+                            Cancel
+                        </a>
+                        <button type="submit"
+                                class="px-space-xl py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[18px]">save</span>
+                            <span>Save Station Configuration</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

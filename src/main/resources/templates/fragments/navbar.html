@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" th:fragment="navbar(activePage)">
+    <div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md">
+        <!-- Logo & Branding -->
+        <a href="/" th:href="@{/}" class="flex items-center gap-space-sm shrink-0 group">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[22px]">bolt</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface leading-none">VOLTALLOC</span>
+                <span class="font-label-mono text-caption uppercase text-outline tracking-wider leading-none mt-space-xs">Smart EV Allocator</span>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation Bar -->
+        <nav class="hidden lg:flex items-center gap-space-xs px-space-xs py-space-xs rounded-full bg-surface-container-low shadow-inner">
+            <a href="/" th:href="@{/}"
+               th:class="${activePage == 'home'} ? 'px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm text-label-md' : 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors'">
+               Home
+            </a>
+            <a href="/dashboard" th:href="@{/dashboard}"
+               th:class="${activePage == 'dashboard'} ? 'px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm text-label-md' : 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors'">
+               Dashboard
+            </a>
+            <a href="/stations" th:href="@{/stations}"
+               th:class="${activePage == 'stations'} ? 'px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm text-label-md' : 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors'">
+               Stations
+            </a>
+            <a href="/users" th:href="@{/users}"
+               th:class="${activePage == 'users'} ? 'px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm text-label-md' : 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors'">
+               Users
+            </a>
+            <a href="/vehicles" th:href="@{/vehicles}"
+               th:class="${activePage == 'vehicles'} ? 'px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm text-label-md' : 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors'">
+               Vehicles
+            </a>
+            <a href="/bookings" th:href="@{/bookings}"
+               th:class="${activePage == 'bookings'} ? 'px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm text-label-md' : 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors'">
+               Bookings
+            </a>
+        </nav>
+
+        <!-- Right Side: Grid Telemetry Pulse + User Account -->
+        <div class="flex items-center gap-space-md shrink-0">
+            <!-- Grid Online Telemetric Pill -->
+            <div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)] border border-outline-variant/30">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                </span>
+                <span class="font-label-mono text-caption text-secondary uppercase tracking-wider">Grid Online • 99.8%</span>
+            </div>
+
+            <!-- Logged In User State -->
+            <div th:if="${session.loggedInUser != null}" class="flex items-center gap-space-sm pl-space-xs">
+                <div class="hidden md:flex flex-col text-right">
+                    <span class="font-label-md text-label-md text-on-surface leading-tight font-medium" th:text="${session.loggedInUser.name}">Alex R.</span>
+                    <span class="font-caption text-caption text-outline leading-tight">Fleet Operator</span>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm">
+                    <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+                </div>
+                <a href="/logout" th:href="@{/logout}"
+                   class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-error-container hover:text-error transition-colors font-label-md text-label-md">
+                    <span class="material-symbols-outlined text-[16px]">logout</span>
+                    <span class="hidden sm:inline">Logout</span>
+                </a>
+            </div>
+
+            <!-- Guest State -->
+            <div th:if="${session.loggedInUser == null}" class="flex items-center gap-space-xs">
+                <a href="/login" th:href="@{/login}"
+                   class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface">
+                    <span class="material-symbols-outlined text-[16px]">login</span>
+                    <span>Login</span>
+                </a>
+                <a href="/register" th:href="@{/register}"
+                   class="px-space-md py-space-xs rounded-full bg-primary text-on-primary hover:bg-primary-container transition-colors font-label-md text-label-md shadow-sm">
+                    Register
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

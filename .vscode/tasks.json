@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Spring Boot: Run",
+            "type": "shell",
+            "command": ".\\apache-maven-3.9.6\\bin\\mvn.cmd",
+            "args": [
+                "spring-boot:run"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Maven: Clean Install",
+            "type": "shell",
+            "command": ".\\apache-maven-3.9.6\\bin\\mvn.cmd",
+            "args": [
+                "clean",
+                "install",
+                "-DskipTests"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Maven: Clean",
+            "type": "shell",
+            "command": ".\\apache-maven-3.9.6\\bin\\mvn.cmd",
+            "args": [
+                "clean"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

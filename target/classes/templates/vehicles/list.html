@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head :: head('EV Fleet Battery Telemetry')}"></head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+    <!-- Navbar Fragment -->
+    <div th:replace="~{fragments/navbar :: navbar('vehicles')}"></div>
+
+    <main class="w-full pt-16 bg-surface flex-grow">
+        <div class="flex flex-col w-full">
+            <div class="w-full px-gutter py-space-xl max-w-7xl mx-auto flex flex-col gap-space-xl">
+
+                <!-- Top Telemetry & Control Cockpit Header -->
+                <div class="relative overflow-hidden rounded-2xl bg-surface-container-low p-space-lg lg:p-space-xl shadow-sm border border-outline-variant/20">
+                    <div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-gradient-to-br from-primary-fixed-dim/40 via-surface-variant/20 to-transparent blur-3xl pointer-events-none"></div>
+                    <div class="absolute -left-12 -bottom-12 w-64 h-64 rounded-full bg-gradient-to-tr from-secondary-fixed/30 via-transparent to-transparent blur-2xl pointer-events-none"></div>
+
+                    <div class="relative z-10 flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg">
+                        <div class="flex flex-col gap-space-xs max-w-2xl">
+                            <div class="flex items-center gap-space-xs">
+                                <span class="inline-block w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_10px_#006c49]"></span>
+                                <span class="font-label-mono text-caption uppercase tracking-wider text-secondary font-semibold">Telematics Bridge Synced • 24Hz Stream</span>
+                            </div>
+                            <h1 class="font-display-lg text-3xl sm:text-4xl lg:text-display-lg text-on-surface tracking-tight leading-none font-bold">Registered EV Fleet</h1>
+                            <p class="font-body-lg text-body-md lg:text-body-lg text-on-surface-variant pt-space-xs">
+                                Track vehicle battery telemetry, charging port compatibility, and assigned owners across municipal &amp; commercial allocation banks.
+                            </p>
+
+                            <!-- Key Metrics Pills Array -->
+                            <div class="flex flex-wrap items-center gap-space-sm pt-space-md">
+                                <div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-sm border border-outline-variant/20">
+                                    <span class="material-symbols-outlined text-primary text-[18px]">electric_car</span>
+                                    <span class="font-label-mono text-label-md text-on-surface font-semibold" th:text="${#lists.size(vehicles)} + ' Total EVs'">0 Total EVs</span>
+                                </div>
+                                <div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-sm border border-outline-variant/20">
+                                    <span class="material-symbols-outlined text-secondary text-[18px]">battery_charging_full</span>
+                                    <span class="font-label-mono text-label-md text-on-surface font-semibold">Battery Telemetry Active</span>
+                                </div>
+                                <div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-sm border border-outline-variant/20">
+                                    <span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+                                    <span class="font-label-mono text-label-md text-on-surface font-semibold">Live SoC Monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Primary Action Callout -->
+                        <div class="flex flex-wrap items-center gap-space-sm shrink-0">
+                            <a href="/vehicles/new" th:href="@{/vehicles/new}"
+                               class="px-space-xl py-space-md rounded-full bg-primary text-on-primary hover:bg-primary-container shadow-md transition-all flex items-center gap-space-xs font-headline-sm text-label-md uppercase tracking-wide">
+                                <span class="material-symbols-outlined text-[20px]">add_circle</span>
+                                <span>+ Register Vehicle</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicles Table / Cards HUD -->
+                <div class="rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/20 p-space-lg overflow-hidden">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-md border-b border-surface-container-low">
+                        <div class="flex items-center gap-space-xs">
+                            <span class="material-symbols-outlined text-primary text-[22px]">directions_car</span>
+                            <h2 class="font-headline-sm text-lg text-on-surface font-semibold">Active Fleet Manifest</h2>
+                        </div>
+                        <div class="relative w-full sm:w-72">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+                            <input type="text" id="vehicle-search" oninput="searchVehicles(event)" placeholder="Search model or plate..."
+                                   class="w-full pl-9 pr-4 py-space-xs rounded-full bg-surface-container text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"/>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto no-scrollbar mt-space-sm">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-surface-container font-label-mono text-caption uppercase text-outline">
+                                    <th class="py-space-sm px-space-md">ID</th>
+                                    <th class="py-space-sm px-space-md">Model &amp; Specs</th>
+                                    <th class="py-space-sm px-space-md">Plate Registration</th>
+                                    <th class="py-space-sm px-space-md">Battery Pack Capacity</th>
+                                    <th class="py-space-sm px-space-md">State of Charge (SoC)</th>
+                                    <th class="py-space-sm px-space-md">Assigned Owner</th>
+                                    <th class="py-space-sm px-space-md text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-surface-container-low font-body-md text-sm" id="vehicles-table-body">
+                                <tr th:each="v : ${vehicles}" class="vehicle-row hover:bg-surface-container-low/50 transition-colors">
+                                    <td class="py-space-md px-space-md font-label-mono text-caption text-outline font-bold" th:text="'#V-' + ${v.vehicleId}">#V-1</td>
+                                    <td class="py-space-md px-space-md">
+                                        <div class="flex items-center gap-space-sm">
+                                            <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                                                <span class="material-symbols-outlined text-[18px]">electric_car</span>
+                                            </div>
+                                            <div>
+                                                <span class="font-semibold text-on-surface block" th:text="${v.model}">Tata Nexon EV</span>
+                                                <span class="font-caption text-caption text-outline">All-Electric Powertrain</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-space-md px-space-md">
+                                        <span class="inline-block px-3 py-1 rounded-lg bg-inverse-surface text-inverse-on-surface font-mono text-xs tracking-wider border border-white/10 font-bold"
+                                              th:text="${v.registrationNumber}">
+                                            MH12AB1234
+                                        </span>
+                                    </td>
+                                    <td class="py-space-md px-space-md font-label-mono text-sm text-on-surface font-semibold"
+                                        th:text="${v.batteryCapacity} + ' kWh'">
+                                        30.2 kWh
+                                    </td>
+                                    <td class="py-space-md px-space-md">
+                                        <div class="flex items-center gap-space-sm w-44">
+                                            <div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+                                                <div class="h-full rounded-full transition-all duration-500"
+                                                     th:classappend="${v.currentBatteryLevel >= 50 ? 'bg-secondary' : (v.currentBatteryLevel >= 20 ? 'bg-primary' : 'bg-error')}"
+                                                     th:style="'width: ' + ${v.currentBatteryLevel} + '%'">
+                                                </div>
+                                            </div>
+                                            <span class="font-label-mono text-xs font-bold text-on-surface shrink-0" th:text="${v.currentBatteryLevel} + '%'">45%</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-space-md px-space-md">
+                                        <div class="flex items-center gap-space-xs">
+                                            <div class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">
+                                                <span class="material-symbols-outlined text-[14px]">person</span>
+                                            </div>
+                                            <span class="text-on-surface font-medium" th:text="${v.user != null ? v.user.name : 'Unassigned'}">John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-space-md px-space-md text-right">
+                                        <div class="flex items-center justify-end gap-space-xs">
+                                            <a th:href="@{/bookings/new(vehicleId=${v.vehicleId})}"
+                                               class="px-space-md py-1 rounded-full bg-primary text-on-primary hover:bg-primary-container font-headline-sm text-xs shadow-sm transition-all flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-[14px]">bolt</span>
+                                                <span>Charge</span>
+                                            </a>
+                                            <a th:href="@{/vehicles/delete/{id}(id=${v.vehicleId})}"
+                                               onclick="return confirm('Delete this vehicle from fleet?');"
+                                               class="p-1.5 rounded-full hover:bg-error-container text-outline hover:text-error transition-colors" title="Delete">
+                                                <span class="material-symbols-outlined text-[16px]">delete</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr th:if="${#lists.isEmpty(vehicles)}">
+                                    <td colspan="7" class="py-12 text-center text-outline">
+                                        No registered electric vehicles in fleet. <a href="/vehicles/new" class="text-primary font-medium hover:underline">Add one now!</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script>
+        function searchVehicles(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const rows = document.querySelectorAll('.vehicle-row');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

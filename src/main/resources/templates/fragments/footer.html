@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer class="w-full bg-surface-container-lowest py-space-lg shadow-[0_-1px_6px_rgba(0,0,0,0.02)] border-t border-outline-variant/20" th:fragment="footer">
+    <div class="w-full px-gutter max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption">
+            <span class="font-semibold text-on-surface">VOLTALLOC</span>
+            <span>•</span>
+            <span>© 2025 Smart EV Allocator</span>
+            <span>•</span>
+            <span class="text-outline">Java Spring Boot Core</span>
+        </div>
+        <div class="flex items-center gap-space-lg">
+            <div class="flex items-center gap-space-xs">
+                <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                <span class="font-label-mono text-caption text-on-surface-variant uppercase">Telemetry Socket Active</span>
+            </div>
+            <div class="flex items-center gap-space-xs">
+                <span class="w-2 h-2 rounded-full bg-primary"></span>
+                <span class="font-label-mono text-caption text-on-surface-variant uppercase">Load Balancer: OK</span>
+            </div>
+            <div class="flex items-center gap-space-xs">
+                <span class="material-symbols-outlined text-[15px] text-outline">dns</span>
+                <span class="font-label-mono text-caption text-on-surface-variant uppercase">H2/JPA Synced</span>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-on-surface":"#eef0ff","secondary-fixed":"#6ffbbe","tertiary":"#b61722","on-primary":"#ffffff","on-tertiary-fixed-variant":"#930013","on-secondary-container":"#00714d","surface-container-low":"#f2f3ff","on-surface":"#131b2e","inverse-surface":"#283044","surface-variant":"#dae2fd","surface-bright":"#faf8ff","tertiary-fixed":"#ffdad7","on-tertiary":"#ffffff","inverse-primary":"#93ccff","outline-variant":"#bfc7d2","on-error":"#ffffff","error":"#ba1a1a","on-primary-container":"#fdfcff","surface-tint":"#006398","surface-container":"#eaedff","surface-dim":"#d2d9f4","primary-container":"#007bb9","surface-container-lowest":"#ffffff","surface-container-highest":"#dae2fd","secondary-fixed-dim":"#4edea3","on-background":"#131b2e","on-secondary-fixed":"#002113","on-primary-fixed":"#001d31","background":"#faf8ff","primary-fixed-dim":"#93ccff","surface":"#faf8ff","on-surface-variant":"#3f4850","tertiary-fixed-dim":"#ffb3ad","on-secondary-fixed-variant":"#005236","on-error-container":"#93000a","on-primary-fixed-variant":"#004b73","outline":"#707881","on-tertiary-fixed":"#410004","secondary-container":"#6cf8bb","on-tertiary-container":"#fffbff","secondary":"#006c49","on-secondary":"#ffffff","error-container":"#ffdad6","surface-container-high":"#e2e7ff","primary":"#006194","primary-fixed":"#cce5ff","tertiary-container":"#da3437"},borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},spacing:{"margin":"2rem","space-xs":"0.25rem","gutter":"1.5rem","space-lg":"1.5rem","space-md":"1rem","space-xl":"2.5rem","space-sm":"0.5rem"},fontFamily:{"caption":["Inter"],"body-md":["Inter"],"display-lg-mobile":["Space Grotesk"],"label-mono":["Space Grotesk"],"telemetry-metric-sm":["Space Grotesk"],"telemetry-metric":["Space Grotesk"],"display-md-mobile":["Space Grotesk"],"display-lg":["Space Grotesk"],"headline-sm":["Space Grotesk"],"display-md":["Space Grotesk"],"body-lg":["Inter"],"label-md":["Inter"]},fontSize:{"caption":["11px",{"lineHeight":"14px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-mono":["11px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"700"}],"telemetry-metric-sm":["28px",{"lineHeight":"32px","letterSpacing":"-0.03em","fontWeight":"600"}],"telemetry-metric":["48px",{"lineHeight":"52px","letterSpacing":"-0.04em","fontWeight":"700"}],"display-md-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-md":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><img alt="Smart EV Allocator Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkXG_LCb8G5psqHox5p4ADEaFqIgkeoJQn-_3Jc3KZ6uXFiyUUtBPbMv-Vn2KdGnTyiM8HoVZjLS7wsHsvWSfG_-PV6_gkS9QHvKc5mrVsjhkCNTuem-P6dwwIItUaoBCwdkI7Jc01AFhcHihuLereSfPvMIVO9ZPo6fkPB5t4BtLt3zPEKvpanNu_VSADCAzs7ZxkK66bM1H05ra93LA3bAik-bnBypauJBw64m8GqHwV3-5nt6HreQ"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface leading-none">VOLTALLOC</span><span class="font-label-mono text-caption uppercase text-outline tracking-wider leading-none mt-space-xs">Smart EV Allocator</span></div></div><nav class="hidden lg:flex items-center gap-space-xs px-space-xs py-space-xs rounded-full bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a aria-current="page" class="px-space-md py-space-xs rounded-full transition-colors bg-primary-container text-on-primary-container font-headline-sm" data-path="stations" href="#">Stations</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="users" href="#">Users</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="vehicles" href="#">Vehicles</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="bookings" href="#">Bookings</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#006c49]"></span><span class="font-label-mono text-caption text-secondary uppercase">Grid Online • 99.8% Efficiency</span></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Alex R.</span><span class="font-caption text-caption text-outline leading-tight">Fleet Admin</span></div><a class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md" data-path="login" href="#"><span class="material-symbols-outlined text-[16px]">logout</span><span>Logout</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full">
+<!-- Interactive Client-side Script for Modal & Search/Filter Behavior -->
+<script>
+    function toggleDrawer(open) {
+      const drawer = document.getElementById('station-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      if (open) {
+        drawer.classList.remove('translate-x-full');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        backdrop.classList.add('opacity-100');
+        document.body.style.overflow = 'hidden';
+      } else {
+        drawer.classList.add('translate-x-full');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        backdrop.classList.remove('opacity-100');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function filterStations(type) {
+      const cards = document.querySelectorAll('.station-card');
+      const pills = document.querySelectorAll('.filter-pill');
+      
+      pills.forEach(p => {
+        p.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        p.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+      });
+      event.currentTarget.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+      event.currentTarget.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+
+      cards.forEach(card => {
+        const charging = card.getAttribute('data-charging');
+        const status = card.getAttribute('data-status');
+        if (type === 'all') {
+          card.classList.remove('hidden');
+        } else if (type === 'dc' && charging.includes('DC')) {
+          card.classList.remove('hidden');
+        } else if (type === 'ac' && charging.includes('AC')) {
+          card.classList.remove('hidden');
+        } else if (type === 'available' && status === 'AVAILABLE') {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function searchStations(e) {
+      const query = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('.station-card');
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const loc = card.getAttribute('data-location').toLowerCase();
+        if (name.includes(query) || loc.includes(query)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+<!-- Telemetry Atmosphere Top Accent Glow -->
+<div class="relative w-full overflow-hidden px-gutter pb-space-xl">
+<div class="absolute -top-32 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -top-20 right-1/4 w-80 h-80 bg-secondary/15 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Telemetry Overview Summary Strip -->
+<div class="w-full pt-space-lg pb-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-md py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-mono text-caption uppercase flex items-center gap-1.5 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+          Synchronized to Spring Fleet Core
+        </span>
+<span class="hidden md:inline-flex px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-mono text-caption uppercase">
+          Dynamic Load Optimizer: Adaptive Peak
+        </span>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary">ev_station</span>
+<span><b>48</b> Grid Terminals</span>
+</span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">bolt</span>
+<span><b>84.2%</b> Fleet Throughput</span>
+</span>
+</div>
+</div>
+<!-- Section Header Bar -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mt-space-sm mb-space-xl">
+<div class="flex flex-col max-w-2xl">
+<span class="font-label-mono text-caption uppercase text-primary tracking-widest mb-space-xs">Infrastructure Telemetry &amp; Dispatch</span>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-none mb-space-xs">Charging Stations</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage charging infrastructure, slot availability, and real-time power tariffs across urban nodes.</p>
+</div>
+<div class="flex items-center gap-space-sm self-start lg:self-auto">
+<button class="group flex items-center gap-space-sm px-space-xl py-space-md rounded-full bg-primary hover:bg-primary-container text-on-primary transition-all duration-300 shadow-md hover:shadow-lg active:scale-95" onclick="toggleDrawer(true)">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:rotate-90">add_circle</span>
+<span class="font-headline-sm text-label-md tracking-wide">Create New Station</span>
+</button>
+</div>
+</div>
+<!-- Search & Filter Glass Bar -->
+<div class="w-full bg-surface-container-lowest/80 backdrop-blur-xl p-space-md rounded-lg shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md mb-space-xl">
+<!-- Search Input -->
+<div class="relative w-full md:w-96 flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-11 pr-space-md py-space-sm bg-surface-container-low rounded-full font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container transition-all" onkeyup="searchStations(event)" placeholder="Search station name or location..." type="text"/>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto w-full md:w-auto py-1 scrollbar-none">
+<button class="filter-pill shrink-0 px-space-md py-space-xs rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all shadow-sm" onclick="filterStations('all')">
+          All Types
+        </button>
+<button class="filter-pill shrink-0 px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all font-label-md text-label-md" onclick="filterStations('dc')">
+          DC Fast (150kW+)
+        </button>
+<button class="filter-pill shrink-0 px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all font-label-md text-label-md" onclick="filterStations('ac')">
+          AC Level 2
+        </button>
+<button class="filter-pill shrink-0 px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all font-label-md text-label-md" onclick="filterStations('available')">
+          Status: Available Only
+        </button>
+</div>
+</div>
+<!-- 3-Column Responsive Station Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="stations-grid">
+<!-- Station 1: Apex HyperCharger West -->
+<div class="station-card group flex flex-col justify-between bg-surface-container-lowest rounded-lg p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden" data-charging="DC Fast" data-location="Sector 4, Innovation Way" data-name="Apex HyperCharger West" data-status="AVAILABLE" style="">
+<div class="flex flex-col">
+<!-- Top Row: Status badge & Config action -->
+<div class="flex items-center justify-between mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-secondary-container/30 text-secondary font-label-mono text-caption uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#006c49]"></span>
+              AVAILABLE
+            </span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface flex items-center justify-center transition-colors" onclick="toggleDrawer(true)" title="Edit Station Config">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Title & Location -->
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors">Apex HyperCharger West</h2>
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption mt-space-xs mb-space-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>Sector 4, Innovation Way</span>
+</div>
+<!-- Specs Row -->
+<div class="flex items-center gap-space-xs mb-space-lg">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container text-primary font-label-mono text-caption uppercase">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+              DC Fast 250kW
+            </span>
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-caption text-caption">
+              CCS2 / NACS
+            </span>
+</div>
+<!-- Slot Telemetry & Segmented Progress Bar -->
+<div class="bg-surface-container-low/60 rounded-DEFAULT p-space-md mb-space-lg">
+<div class="flex items-baseline justify-between mb-space-xs">
+<span class="font-label-mono text-caption uppercase text-on-surface-variant">Slot Availability</span>
+<span class="font-label-mono text-caption text-on-surface font-semibold">6 / 8 Slots Free</span>
+</div>
+<!-- Mini Segmented Bar (8 total slots: 6 available [Emerald/Secondary], 2 occupied [Muted]) -->
+<div class="flex gap-1.5 h-2 w-full pt-1">
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+</div>
+</div>
+</div>
+<!-- Tariff & Booking CTA -->
+<div class="pt-space-md flex items-center justify-between border-t-0">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption uppercase text-outline leading-tight">Tariff</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-on-surface leading-none">$0.32<span class="font-body-md text-caption text-on-surface-variant ml-1 font-normal">/ kWh</span></span>
+</div>
+<button class="flex items-center gap-1 px-space-lg py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-label-md transition-all shadow-sm">
+<span>Book Slot</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Station 2: Silicon District Station 04 -->
+<div class="station-card group flex flex-col justify-between bg-surface-container-lowest rounded-lg p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden" data-charging="DC Fast" data-location="Terminal 2, Bay C" data-name="Silicon District Station 04" data-status="FULL" style="">
+<div class="flex flex-col">
+<!-- Top Row: Status badge & Config action -->
+<div class="flex items-center justify-between mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-tertiary-container/20 text-tertiary font-label-mono text-caption uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#b61722]"></span>
+              FULL
+            </span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface flex items-center justify-center transition-colors" onclick="toggleDrawer(true)" title="Edit Station Config">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Title & Location -->
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors">Silicon District Station 04</h2>
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption mt-space-xs mb-space-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>Terminal 2, Bay C</span>
+</div>
+<!-- Specs Row -->
+<div class="flex items-center gap-space-xs mb-space-lg">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container text-primary font-label-mono text-caption uppercase">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+              DC Fast 150kW
+            </span>
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-caption text-caption">
+              CCS2
+            </span>
+</div>
+<!-- Slot Telemetry & Segmented Progress Bar -->
+<div class="bg-surface-container-low/60 rounded-DEFAULT p-space-md mb-space-lg">
+<div class="flex items-baseline justify-between mb-space-xs">
+<span class="font-label-mono text-caption uppercase text-on-surface-variant">Slot Availability</span>
+<span class="font-label-mono text-caption text-tertiary font-semibold">0 / 6 Slots Free</span>
+</div>
+<!-- All 6 slots full (Muted/Tertiary) -->
+<div class="flex gap-1.5 h-2 w-full pt-1">
+<div class="flex-1 rounded-full bg-tertiary/70"></div>
+<div class="flex-1 rounded-full bg-tertiary/70"></div>
+<div class="flex-1 rounded-full bg-tertiary/70"></div>
+<div class="flex-1 rounded-full bg-tertiary/70"></div>
+<div class="flex-1 rounded-full bg-tertiary/70"></div>
+<div class="flex-1 rounded-full bg-tertiary/70"></div>
+</div>
+</div>
+</div>
+<!-- Tariff & Booking CTA (Disabled style when Full) -->
+<div class="pt-space-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption uppercase text-outline leading-tight">Tariff</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-on-surface leading-none">$0.28<span class="font-body-md text-caption text-on-surface-variant ml-1 font-normal">/ kWh</span></span>
+</div>
+<button class="flex items-center gap-1 px-space-lg py-space-sm rounded-full bg-surface-container text-outline font-headline-sm text-label-md cursor-not-allowed" disabled="">
+<span>Waitlist</span>
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</button>
+</div>
+</div>
+<!-- Station 3: GreenLine Transit Depot -->
+<div class="station-card group flex flex-col justify-between bg-surface-container-lowest rounded-lg p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden" data-charging="AC Dual" data-location="North Boulevard, Hub 9" data-name="GreenLine Transit Depot" data-status="AVAILABLE" style="">
+<div class="flex flex-col">
+<!-- Top Row: Status badge & Config action -->
+<div class="flex items-center justify-between mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-secondary-container/30 text-secondary font-label-mono text-caption uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#006c49]"></span>
+              AVAILABLE
+            </span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface flex items-center justify-center transition-colors" onclick="toggleDrawer(true)" title="Edit Station Config">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Title & Location -->
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors">GreenLine Transit Depot</h2>
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption mt-space-xs mb-space-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>North Boulevard, Hub 9</span>
+</div>
+<!-- Specs Row -->
+<div class="flex items-center gap-space-xs mb-space-lg">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container text-primary font-label-mono text-caption uppercase">
+<span class="material-symbols-outlined text-[14px]">electrical_services</span>
+              🔌 AC Dual 22kW
+            </span>
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-caption text-caption">
+              Type 2 Universal
+            </span>
+</div>
+<!-- Slot Telemetry & Segmented Progress Bar -->
+<div class="bg-surface-container-low/60 rounded-DEFAULT p-space-md mb-space-lg">
+<div class="flex items-baseline justify-between mb-space-xs">
+<span class="font-label-mono text-caption uppercase text-on-surface-variant">Slot Availability</span>
+<span class="font-label-mono text-caption text-on-surface font-semibold">10 / 12 Slots Free</span>
+</div>
+<!-- Segmented Bar (10 green, 2 muted) -->
+<div class="flex gap-1 h-2 w-full pt-1">
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+</div>
+</div>
+</div>
+<!-- Tariff & Booking CTA -->
+<div class="pt-space-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption uppercase text-outline leading-tight">Tariff</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-on-surface leading-none">$0.19<span class="font-body-md text-caption text-on-surface-variant ml-1 font-normal">/ kWh</span></span>
+</div>
+<button class="flex items-center gap-1 px-space-lg py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-label-md transition-all shadow-sm">
+<span>Book Slot</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Station 4: Metro Plaza FastHub -->
+<div class="station-card group flex flex-col justify-between bg-surface-container-lowest rounded-lg p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden" data-charging="DC Fast" data-location="Underground Level -1, Bay 14" data-name="Metro Plaza FastHub" data-status="AVAILABLE" style="">
+<div class="flex flex-col">
+<!-- Top Row: Status badge & Config action -->
+<div class="flex items-center justify-between mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-secondary-container/30 text-secondary font-label-mono text-caption uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#006c49]"></span>
+              AVAILABLE
+            </span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface flex items-center justify-center transition-colors" onclick="toggleDrawer(true)" title="Edit Station Config">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Title & Location -->
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors">Metro Plaza FastHub</h2>
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption mt-space-xs mb-space-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>Underground Level -1, Bay 14</span>
+</div>
+<!-- Specs Row -->
+<div class="flex items-center gap-space-xs mb-space-lg">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container text-primary font-label-mono text-caption uppercase">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+              DC Fast 350kW Ultra
+            </span>
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-caption text-caption">
+              Liquid-Cooled
+            </span>
+</div>
+<!-- Slot Telemetry & Segmented Progress Bar -->
+<div class="bg-surface-container-low/60 rounded-DEFAULT p-space-md mb-space-lg">
+<div class="flex items-baseline justify-between mb-space-xs">
+<span class="font-label-mono text-caption uppercase text-on-surface-variant">Slot Availability</span>
+<span class="font-label-mono text-caption text-on-surface font-semibold">2 / 4 Slots Free</span>
+</div>
+<!-- Segmented Bar (2 green, 2 muted) -->
+<div class="flex gap-2 h-2 w-full pt-1">
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+</div>
+</div>
+</div>
+<!-- Tariff & Booking CTA -->
+<div class="pt-space-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption uppercase text-outline leading-tight">Tariff</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-on-surface leading-none">$0.38<span class="font-body-md text-caption text-on-surface-variant ml-1 font-normal">/ kWh</span></span>
+</div>
+<button class="flex items-center gap-1 px-space-lg py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-label-md transition-all shadow-sm">
+<span>Book Slot</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Station 5: Grand Central EV Pod -->
+<div class="station-card group flex flex-col justify-between bg-surface-container-lowest rounded-lg p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden" data-charging="DC Fast" data-location="Platform 1A, Logistics Deck" data-name="Grand Central EV Pod" data-status="MAINTENANCE" style="">
+<div class="flex flex-col">
+<!-- Top Row: Status badge & Config action -->
+<div class="flex items-center justify-between mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-high text-outline font-label-mono text-caption uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+              MAINTENANCE
+            </span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface flex items-center justify-center transition-colors" onclick="toggleDrawer(true)" title="Edit Station Config">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Title & Location -->
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors">Grand Central EV Pod</h2>
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption mt-space-xs mb-space-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>Platform 1A, Logistics Deck</span>
+</div>
+<!-- Specs Row -->
+<div class="flex items-center gap-space-xs mb-space-lg">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container text-primary font-label-mono text-caption uppercase">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+              DC Fast 200kW
+            </span>
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-caption text-caption">
+              Firmware v4.8 Update
+            </span>
+</div>
+<!-- Slot Telemetry & Segmented Progress Bar -->
+<div class="bg-surface-container-low/60 rounded-DEFAULT p-space-md mb-space-lg">
+<div class="flex items-baseline justify-between mb-space-xs">
+<span class="font-label-mono text-caption uppercase text-on-surface-variant">Slot Availability</span>
+<span class="font-label-mono text-caption text-outline font-semibold">Offline (0/4)</span>
+</div>
+<!-- Muted bars -->
+<div class="flex gap-2 h-2 w-full pt-1">
+<div class="flex-1 rounded-full bg-outline-variant"></div>
+<div class="flex-1 rounded-full bg-outline-variant"></div>
+<div class="flex-1 rounded-full bg-outline-variant"></div>
+<div class="flex-1 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+</div>
+<!-- Tariff & Booking CTA -->
+<div class="pt-space-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption uppercase text-outline leading-tight">Tariff</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-outline leading-none">$0.25<span class="font-body-md text-caption text-outline ml-1 font-normal">/ kWh</span></span>
+</div>
+<button class="flex items-center gap-1 px-space-lg py-space-sm rounded-full bg-surface-container text-outline font-headline-sm text-label-md cursor-not-allowed" disabled="">
+<span>Service Node</span>
+<span class="material-symbols-outlined text-[16px]">build</span>
+</button>
+</div>
+</div>
+<!-- Station 6: Airport SkyLink Charging Bay -->
+<div class="station-card group flex flex-col justify-between bg-surface-container-lowest rounded-lg p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden" data-charging="DC Fast" data-location="Terminal 1 Arrival Loop, Zone F" data-name="Airport SkyLink Charging Bay" data-status="AVAILABLE" style="">
+<div class="flex flex-col">
+<!-- Top Row: Status badge & Config action -->
+<div class="flex items-center justify-between mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-secondary-container/30 text-secondary font-label-mono text-caption uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#006c49]"></span>
+              AVAILABLE
+            </span>
+<button class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface flex items-center justify-center transition-colors" onclick="toggleDrawer(true)" title="Edit Station Config">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Title & Location -->
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors">SkyLink Arrival Bay</h2>
+<div class="flex items-center gap-1 text-on-surface-variant font-caption text-caption mt-space-xs mb-space-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>Terminal 1 Arrival Loop, Zone F</span>
+</div>
+<!-- Specs Row -->
+<div class="flex items-center gap-space-xs mb-space-lg">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container text-primary font-label-mono text-caption uppercase">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+              DC Fast 180kW
+            </span>
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-caption text-caption">
+              CCS2 Compatible
+            </span>
+</div>
+<!-- Slot Telemetry & Segmented Progress Bar -->
+<div class="bg-surface-container-low/60 rounded-DEFAULT p-space-md mb-space-lg">
+<div class="flex items-baseline justify-between mb-space-xs">
+<span class="font-label-mono text-caption uppercase text-on-surface-variant">Slot Availability</span>
+<span class="font-label-mono text-caption text-on-surface font-semibold">4 / 6 Slots Free</span>
+</div>
+<!-- Segmented Bar (4 green, 2 muted) -->
+<div class="flex gap-1.5 h-2 w-full pt-1">
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-secondary"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+<div class="flex-1 rounded-full bg-surface-dim"></div>
+</div>
+</div>
+</div>
+<!-- Tariff & Booking CTA -->
+<div class="pt-space-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-mono text-caption uppercase text-outline leading-tight">Tariff</span>
+<span class="font-telemetry-metric-sm text-telemetry-metric-sm text-on-surface leading-none">$0.35<span class="font-body-md text-caption text-on-surface-variant ml-1 font-normal">/ kWh</span></span>
+</div>
+<button class="flex items-center gap-1 px-space-lg py-space-sm rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-label-md transition-all shadow-sm">
+<span>Book Slot</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Spatial Node Map Section with data-location -->
+<div class="mt-space-xl p-space-lg bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-md">
+<div>
+<span class="font-label-mono text-caption uppercase text-primary">Geographical Station Grid</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Integrated Fleet Spatial Map</h3>
+</div>
+<div class="flex items-center gap-space-sm text-outline font-caption text-caption">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>5 Node Hubs Online</span>
+</div>
+</div>
+<div class="w-full h-72 rounded-DEFAULT bg-surface-container-high bg-cover bg-center overflow-hidden relative shadow-inner" data-location="San Francisco Bay Area Electric Charging Network" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwsJnPkC3sds9j3CoLLRRETZQxPlyOphanB-Rg_lqXC9zCL0LQzJx4M05cFOHGSceBxrYmMFU9RPFR0xka_iD2kI693tJeB9nuz7pqLfkGVhbPpL33kyw7bf6p0xXFTO4sUHODvfUwgL4R_8pheRYmEf1f0MvtpPkCQdqac_CvCGXZhoGqhF08K4qAvviAO7svCWY2YDzLidenUPruGfWiGEOA6RTT09zoJaJkiB28DTua1euMiQbMuw')">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent flex items-end p-space-lg">
+<div class="flex items-center justify-between w-full text-inverse-on-surface">
+<div>
+<span class="font-label-mono text-caption uppercase text-secondary-fixed">Live Telemetry Map</span>
+<p class="font-headline-sm text-headline-sm">San Francisco Metropolitan Cluster</p>
+</div>
+<span class="font-label-mono text-caption px-space-md py-space-xs rounded-full bg-inverse-surface/90 text-inverse-on-surface">LAT 37.7749° N • LON 122.4194° W</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide-out Drawer Backdrop -->
+<div class="fixed inset-0 bg-on-surface/30 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="drawer-backdrop" onclick="toggleDrawer(false)"></div>
+<!-- Quick-Add / Edit Station Slide-Over Drawer (Thymeleaf th:object Compatible) -->
+<aside class="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-surface-container-lowest shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between overflow-y-auto" id="station-drawer">
+<div class="p-space-lg flex flex-col h-full">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between pb-space-lg border-b-0">
+<div>
+<span class="font-label-mono text-caption uppercase text-primary tracking-widest">Configuration Engine</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Provision New Station</h2>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors" onclick="toggleDrawer(false)">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Spring Boot / Thymeleaf Form Compatible Representation -->
+<form action="/stations/save" class="flex flex-col gap-space-lg mt-space-md flex-1" id="stationForm" method="post">
+<!-- Hidden Station ID for CRUD update -->
+<input id="stationId" name="stationId" type="hidden" value=""/>
+<!-- Station Name Field -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-mono text-caption uppercase text-on-surface-variant" for="stationName">Station Name</label>
+<div class="relative">
+<input class="w-full px-space-md py-space-sm bg-surface-container-low rounded-DEFAULT font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="stationName" name="stationName" placeholder="e.g. Apex HyperCharger South" required="" type="text"/>
+</div>
+</div>
+<!-- Location Field -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-mono text-caption uppercase text-on-surface-variant" for="location">Physical Location / Bay</label>
+<div class="relative">
+<input class="w-full px-space-md py-space-sm bg-surface-container-low rounded-DEFAULT font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="location" name="location" placeholder="e.g. Sector 12, Energy Boulevard" required="" type="text"/>
+</div>
+</div>
+<!-- Charging Type Selector -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-mono text-caption uppercase text-on-surface-variant" for="chargingType">Charging Architecture</label>
+<select class="w-full px-space-md py-space-sm bg-surface-container-low rounded-DEFAULT font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="chargingType" name="chargingType">
+<option value="DC_FAST_350KW">⚡ DC Fast Charging (350kW HPC)</option>
+<option selected="" value="DC_FAST_150KW">⚡ DC Fast Charging (150kW Dual)</option>
+<option value="AC_LEVEL_2_22KW">🔌 AC Level 2 (22kW Smart Pod)</option>
+<option value="AC_LEVEL_2_11KW">🔌 AC Level 2 (11kW Destination)</option>
+</select>
+</div>
+<!-- Slot Quantities: Total & Initial Available -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-mono text-caption uppercase text-on-surface-variant" for="numberOfSlots">Total Slots</label>
+<input class="w-full px-space-md py-space-sm bg-surface-container-low rounded-DEFAULT font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="numberOfSlots" max="64" min="1" name="numberOfSlots" required="" type="number" value="8"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-mono text-caption uppercase text-on-surface-variant" for="availableSlots">Initial Free Slots</label>
+<input class="w-full px-space-md py-space-sm bg-surface-container-low rounded-DEFAULT font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="availableSlots" max="64" min="0" name="availableSlots" required="" type="number" value="8"/>
+</div>
+</div>
+<!-- Price Per kWh & Station Status -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-mono text-caption uppercase text-on-surface-variant" for="pricePerKwh">Tariff ($/kWh)</label>
+<input class="w-full px-space-md py-space-sm bg-surface-container-low rounded-DEFAULT font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="pricePerKwh" name="pricePerKwh" placeholder="0.32" required="" step="0.01" type="number" value="0.32"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-mono text-caption uppercase text-on-surface-variant" for="status">Lifecycle Status</label>
+<select class="w-full px-space-md py-space-sm bg-surface-container-low rounded-DEFAULT font-body-md text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all" id="status" name="status">
+<option selected="" value="AVAILABLE">AVAILABLE</option>
+<option value="FULL">FULL</option>
+<option value="MAINTENANCE">MAINTENANCE</option>
+<option value="INACTIVE">INACTIVE</option>
+</select>
+</div>
+</div>
+<!-- Micro Telemetry Preview Card inside form -->
+<div class="p-space-md rounded-DEFAULT bg-surface-container-high/50 flex items-center justify-between mt-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">offline_bolt</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Smart Load Balancing</span>
+<span class="font-caption text-caption text-on-surface-variant">Auto-regulates peak grid draw</span>
+</div>
+</div>
+<span class="font-label-mono text-caption text-secondary uppercase font-semibold">Active</span>
+</div>
+<!-- Actions -->
+<div class="pt-space-lg flex items-center gap-space-md mt-auto">
+<button class="flex-1 py-space-sm px-space-md rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-label-md transition-all text-center" onclick="toggleDrawer(false)" type="button">
+            Cancel
+          </button>
+<button class="flex-1 py-space-sm px-space-md rounded-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-label-md transition-all shadow-md text-center" type="submit">
+            Deploy Station
+          </button>
+</div>
+</form>
+</div>
+</aside>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-lg shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-gutter flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption"><span>© 2025 Smart EV Allocator</span><span>•</span><span>Java Spring Boot Core</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-mono text-caption text-on-surface-variant uppercase">Telemetry Socket Active</span></div><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="font-label-mono text-caption text-on-surface-variant uppercase">Load Balancer: OK</span></div></div></div></footer></body></html>

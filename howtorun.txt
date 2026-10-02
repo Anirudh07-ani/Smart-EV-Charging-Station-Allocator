@@ -1,0 +1,62 @@
+Here are the steps to run the project:
+
+---
+
+## 🚀 How to Run the Smart EV Charging Station Allocator
+
+### Prerequisites
+Before running, make sure you have:
+- **Java 17** installed → verify with: `java -version`
+- **MySQL** running locally with the correct database configured
+
+---
+
+### Step 1 — Set up the Database
+
+1. Open **MySQL Workbench** or any MySQL client
+2. Create the database:
+   ```sql
+   CREATE DATABASE smart_ev_db;
+   ```
+3. Make sure your credentials in `src/main/resources/application.properties` match your MySQL setup (username/password)
+
+---
+
+### Step 2 — Run the App
+
+**Option A — Double-click the batch file:**
+- Navigate to `C:\Users\User\Downloads\Smart EV Charging Station Allocator\`
+- Double-click **`run.bat`**
+
+**Option B — Run from terminal (PowerShell or CMD):**
+```powershell
+cd "C:\Users\User\Downloads\Smart EV Charging Station Allocator"
+.\apache-maven-3.9.6\bin\mvn.cmd spring-boot:run
+```
+
+---
+
+### Step 3 — Open in Browser
+
+Once you see `Started SmartEvAllocatorApplication` in the terminal, open:
+
+```
+http://localhost:8080
+```
+
+---
+
+### What You'll See
+
+| Page | URL |
+|------|-----|
+| 🏠 Home (Landing) | `http://localhost:8080/` |
+| 📊 Dashboard | `http://localhost:8080/dashboard` |
+| ⚡ Stations Grid | `http://localhost:8080/stations` |
+| 📋 Bookings | `http://localhost:8080/bookings` |
+| 🚗 Vehicles | `http://localhost:8080/vehicles` |
+| 👤 Users | `http://localhost:8080/users` |
+
+---
+
+> **Note:** The app uses an in-project Maven (`apache-maven-3.9.6`), so you don't need Maven separately installed — just Java 17+. If you hit a port conflict, make sure nothing else is running on port 8080.
